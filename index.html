@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A hands-on guided tour of the GitHub Copilot app. Install the app, build a space quiz, and explore agent-driven development.">
+    <meta name="theme-color" content="#0d1117">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GitHub Copilot App Lab">
+    <meta property="og:description" content="Install the GitHub Copilot app, build a space quiz, and take it from first prompt to reviewed pull request.">
+    <meta name="twitter:card" content="summary">
+    <title>GitHub Copilot App Lab</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to lab content</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="GitHub Copilot App Lab home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M7 17.5 10.5 10 17 7l3 3 3-3 6.5 3 3.5 7.5-2 11L24 33h-8l-7-4.5-2-11Z"/>
+          <circle cx="15" cy="19" r="2"/><circle cx="25" cy="19" r="2"/>
+          <path d="M15 26c3 2 7 2 10 0"/>
+        </svg>
+        <span>Copilot <strong>App Lab</strong></span>
+      </a>
+      <div class="header-actions">
+        <div class="progress-pill" aria-live="polite">
+          <span id="progress-label">0 of 12 complete</span>
+          <span class="progress-track"><span id="progress-bar"></span></span>
+        </div>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light theme">
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4 8.5 8.5 0 1 0 20 15.2Z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+      <div class="hero-content">
+        <div class="eyebrow"><span class="status-dot"></span> Hands-on workshop</div>
+        <h1>Meet your new<br><span>agentic workspace.</span></h1>
+        <p class="hero-lede">Install the GitHub Copilot app, then take it from first prompt to pull request in one focused, end-to-end tour.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#overview">
+            Start the lab
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6"/></svg>
+          </a>
+          <span class="duration"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg> About 90 minutes</span>
+        </div>
+      </div>
+      <div class="app-window" aria-label="Stylized preview of an agent session">
+        <div class="window-bar"><span></span><span></span><span></span><strong>space-quiz</strong></div>
+        <div class="window-body">
+          <div class="mini-sidebar">
+            <div class="mini-logo">✦</div>
+            <span class="active"></span><span></span><span></span><span></span>
+          </div>
+          <div class="session-preview">
+            <div class="session-label">SESSION · INTERACTIVE</div>
+            <div class="chat-bubble">Create a space exploration quiz with 10 questions...</div>
+            <div class="agent-row"><span class="agent-spark">✦</span><div><strong>Copilot</strong><p>I’ll build a polished, dependency-free quiz and open it in the browser.</p></div></div>
+            <div class="file-change"><span>+</span> index.html <em>created</em></div>
+            <div class="typing"><i></i><i></i><i></i></div>
+          </div>
+          <div class="browser-preview">
+            <div class="browser-bar"><span></span><span>index.html</span></div>
+            <div class="planet">🪐</div>
+            <strong>SPACE QUIZ</strong>
+            <small>Question 3 of 10</small>
+            <div class="quiz-progress"><span></span></div>
+            <div class="answer"></div><div class="answer"></div><div class="answer short"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lab-layout">
+      <aside class="lab-nav" aria-label="Lab navigation">
+        <div class="nav-heading">On this journey</div>
+        <nav>
+          <a href="#overview" class="nav-link active"><span>01</span>Overview</a>
+          <a href="#install" class="nav-link"><span>02</span>Install the app</a>
+          <a href="#tour" class="nav-link"><span>03</span>Guided app tour</a>
+          <div class="nav-sub">
+            <a href="#workspace">Create</a>
+            <a href="#build">Build & polish</a>
+            <a href="#publish">Publish</a>
+            <a href="#backlog">Issues & sessions</a>
+            <a href="#review-loop">Review</a>
+            <a href="#automation">Automate</a>
+            <a href="#canvas">Canvas</a>
+          </div>
+          <a href="#resources" class="nav-link"><span>04</span>Review & resources</a>
+        </nav>
+        <button class="reset-button" id="reset-progress" type="button">Reset progress</button>
+      </aside>
+
+      <main id="main-content">
+        <section class="lab-section intro-section" id="overview">
+          <div class="section-kicker">01 · Lab overview</div>
+          <h2>One app. The whole development loop.</h2>
+          <p class="section-intro">The GitHub Copilot app is a desktop workspace built on Copilot CLI. It brings parallel agent sessions, integrated browsing, GitHub issues and pull requests, automations, and shared canvases into one focused experience.</p>
+
+          <div class="outcome-grid">
+            <article><span class="feature-icon">⌁</span><h3>Work in parallel</h3><p>Each session gets an isolated worktree, so agents can tackle multiple tasks without colliding.</p></article>
+            <article><span class="feature-icon">◫</span><h3>Stay in the flow</h3><p>Build, preview, inspect diffs, manage issues, and review pull requests without context switching.</p></article>
+            <article><span class="feature-icon">✦</span><h3>Direct the work</h3><p>Choose Interactive or Autopilot mode, then steer agents with prompts and visual tools.</p></article>
+          </div>
+
+          <div class="callout">
+            <div class="callout-icon">◎</div>
+            <div><strong>What you’ll build</strong><p>A colorful, single-file space quiz. You’ll polish it in the integrated browser, publish it to GitHub, create a backlog, ship an issue through review, and explore automation and Canvas extensions.</p></div>
+          </div>
+
+          <div class="split-heading">
+            <div><div class="mini-kicker">Before you begin</div><h3>Prerequisites</h3></div>
+            <span>Works on macOS, Windows & Linux</span>
+          </div>
+          <div class="check-grid">
+            <label class="check-card"><input class="progress-check" type="checkbox" data-task="github-account"><span class="custom-check"></span><span><strong>GitHub account</strong><small>With Copilot Student or a paid Copilot plan</small></span></label>
+            <label class="check-card"><input class="progress-check" type="checkbox" data-task="git"><span class="custom-check"></span><span><strong>Git installed</strong><small>Verify with <code>git --version</code></small></span></label>
+            <label class="check-card"><input class="progress-check" type="checkbox" data-task="node"><span class="custom-check"></span><span><strong>Node.js 22+</strong><small>Verify with <code>node --version</code></small></span></label>
+          </div>
+          <p class="note"><strong>Organization account?</strong> Copilot Business and Enterprise administrators must enable the <strong>Copilot CLI</strong> policy before the app will work.</p>
+        </section>
+
+        <section class="lab-section" id="install">
+          <div class="section-kicker">02 · Install the app</div>
+          <h2>Get set up and say hello.</h2>
+          <p class="section-intro">Install the desktop app, authenticate with GitHub, and get familiar with the workspace before starting your first project.</p>
+
+          <div class="install-banner">
+            <div class="install-logo">✦</div>
+            <div><strong>GitHub Copilot app</strong><span>Available for Windows, macOS, and Linux</span></div>
+            <a class="button button-primary" href="https://gh.io/app" target="_blank" rel="noopener noreferrer">Download app <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <h3 class="task-heading">Install and configure</h3>
+          <ol class="step-list">
+            <li><span class="step-number">1</span><div>Open the <a href="https://gh.io/app" target="_blank" rel="noopener noreferrer">GitHub Copilot app landing page</a> in a browser.</div></li>
+            <li><span class="step-number">2</span><div>Download the app for your platform and install it using the instructions on the page.</div></li>
+            <li><span class="step-number">3</span><div>Open the app once it’s installed.</div></li>
+            <li><span class="step-number">4</span><div>Select <strong>Sign in to GitHub</strong> and authenticate. GitHub Enterprise Server users: choose <strong>Use GitHub Enterprise</strong> and enter your server address.</div></li>
+            <li><span class="step-number">5</span><div>If asked to connect a repository or local folder, skip it for now—you’ll create a fresh project in the tour.</div></li>
+            <li><span class="step-number">6</span><div>Choose the theme that brings you the most joy, then select <strong>Finish</strong>.</div></li>
+          </ol>
+          <label class="completion-row"><input class="progress-check" type="checkbox" data-task="installed"><span class="custom-check"></span><span><strong>App installed and signed in</strong><small>For your first session, use GPT-5.3-Codex if available; otherwise choose Auto.</small></span></label>
+
+          <h3 class="task-heading">Find your way around</h3>
+          <div class="workspace-list">
+            <div><span>⌂</span><p><strong>Home</strong>Choose a project, configure a session, and send a prompt.</p></div>
+            <div><span>◫</span><p><strong>Sessions</strong>Run agents in isolated workspaces, with several working in parallel.</p></div>
+            <div><span>◌</span><p><strong>Quick chats</strong>Ask questions and brainstorm without creating a branch or worktree.</p></div>
+            <div><span>⌁</span><p><strong>My work</strong>Browse issues and pull requests, check CI, start sessions, and review changes.</p></div>
+            <div><span>⚡</span><p><strong>Automations</strong>Save agent tasks to run on demand or on a schedule.</p></div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-label"><span>✦</span> Try a quick chat</div>
+            <code>How does the GitHub Copilot app use worktrees?</code>
+            <button class="copy-button" type="button" data-copy="How does the GitHub Copilot app use worktrees?" aria-label="Copy quick chat prompt">Copy</button>
+          </div>
+        </section>
+
+        <section class="lab-section tour-start" id="tour">
+          <div class="section-kicker">03 · Guided app tour</div>
+          <h2>Build it. Ship it. Improve it.</h2>
+          <p class="section-intro">Take a standalone space quiz from an empty folder to a reviewed pull request, then put recurring work on autopilot and explore a visual Canvas workflow.</p>
+          <div class="route">
+            <span class="done">Create</span><i></i><span>Build</span><i></i><span>Publish</span><i></i><span>Review</span><i></i><span>Automate</span>
+          </div>
+        </section>
+
+        <section class="tour-section" id="workspace">
+          <div class="tour-marker"><span>01</span></div>
+          <div class="tour-content">
+            <div class="tour-label">Create</div>
+            <h3>Create the Space Quiz workspace</h3>
+            <p>Start a fresh local session with settings that keep you in control.</p>
+            <ol class="compact-steps">
+              <li>Open the Copilot app and confirm you’re signed in.</li>
+              <li>Select the <strong>New</strong> tab.</li>
+              <li>Choose <strong>Local folder or repository</strong>, then create or select an empty folder named <code>space-quiz</code>.</li>
+              <li>Set the session mode to <strong>Interactive</strong>.</li>
+              <li>Choose <strong>GPT-5.3-Codex</strong> if available, or <strong>Auto</strong> as the fallback.</li>
+              <li>Confirm the workspace is the local <code>space-quiz</code> folder.</li>
+            </ol>
+            <label class="section-complete"><input class="progress-check" type="checkbox" data-task="workspace"><span class="custom-check"></span>Workspace ready</label>
+          </div>
+        </section>
+
+        <section class="tour-section" id="build">
+          <div class="tour-marker"><span>02</span></div>
+          <div class="tour-content">
+            <div class="tour-label">Build & polish</div>
+            <h3>Build in the integrated browser</h3>
+            <p>Send one detailed prompt and follow the agent as it creates <code>index.html</code>.</p>
+            <div class="prompt-card large">
+              <div class="prompt-label"><span>✦</span> Send this prompt</div>
+              <code>Create a space exploration quiz with 10 questions, a progress bar, score counter, and colorful animated feedback (green for correct, red shake for wrong). Show a results screen with emoji reaction at the end. Center in a narrow column. Single index.html, no server/dependencies. Polished, sans-serif, 14–16px body, prefers-color-scheme. Open in the integrated browser.</code>
+              <button class="copy-button" type="button" data-copy-target>Copy prompt</button>
+            </div>
+            <p>Play a few questions. Confirm the progress bar, score, correct state, and incorrect shake all work.</p>
+
+            <h4>Inspect the generated code</h4>
+            <p>Collapse the left sidebar and right-side browser panel, review <code>index.html</code> in the expanded code area, then restore both panels.</p>
+
+            <h4>Polish with the element picker</h4>
+            <ol class="compact-steps">
+              <li>Choose the element picker in the browser toolbar.</li>
+              <li>Select the quiz heading or answer area.</li>
+              <li>Send the prompt below and watch the browser refresh.</li>
+            </ol>
+            <div class="prompt-card">
+              <div class="prompt-label"><span>✦</span> Visual refinement</div>
+              <code>Make the selected element feel more like a mission-control display. Keep it accessible and preserve the existing light and dark themes.</code>
+              <button class="copy-button" type="button" data-copy-target>Copy prompt</button>
+            </div>
+            <details>
+              <summary>Optional follow-up ideas <span>+</span></summary>
+              <ul>
+                <li>Add a subtle star-field background that respects <code>prefers-reduced-motion</code>.</li>
+                <li>Make the results screen more celebratory when the score is 8 or higher.</li>
+                <li>Improve keyboard focus states and verify the quiz without a mouse.</li>
+              </ul>
+            </details>
+            <label class="section-complete"><input class="progress-check" type="checkbox" data-task="built"><span class="custom-check"></span>Quiz built and polished</label>
+          </div>
+        </section>
+
+        <section class="tour-section" id="publish">
+          <div class="tour-marker"><span>03</span></div>
+          <div class="tour-content">
+            <div class="tour-label">Publish</div>
+            <h3>Publish the local project</h3>
+            <p>Turn the experiment into a public GitHub repository.</p>
+            <div class="prompt-card large">
+              <div class="prompt-label"><span>✦</span> Send this prompt</div>
+              <code>Initialize this folder as a Git repository, create an initial commit, and create a new public GitHub repository named space-quiz in my account. Push the current branch and set it as the default branch. Refresh the project within this app so the GitHub project is linked.</code>
+              <button class="copy-button" type="button" data-copy-target>Copy prompt</button>
+            </div>
+            <div class="warning"><strong>Review before approving</strong><span>The agent will ask for confirmation before it creates a repository or pushes code. Review the action, approve it, then confirm <code>index.html</code> appears on GitHub.</span></div>
+            <label class="section-complete"><input class="progress-check" type="checkbox" data-task="published"><span class="custom-check"></span>Repository published</label>
+          </div>
+        </section>
+
+        <section class="tour-section" id="backlog">
+          <div class="tour-marker"><span>04</span></div>
+          <div class="tour-content">
+            <div class="tour-label">Issues & sessions</div>
+            <h3>Build a backlog in My work</h3>
+            <p>Ask the agent to turn its own product ideas into focused work items.</p>
+            <div class="prompt-card large">
+              <div class="prompt-label"><span>✦</span> Create three issues</div>
+              <code>Review the space quiz and suggest three focused feature ideas that could each be completed in a short session. Create a separate GitHub issue for each idea with a clear title, user-focused description, and acceptance criteria. Do not implement them yet.</code>
+              <button class="copy-button" type="button" data-copy-target>Copy prompt</button>
+            </div>
+            <p>Open <strong>My work</strong>, compare the scope and acceptance criteria of the three new issues, and choose one to implement.</p>
+
+            <h4>Implement an issue in an isolated worktree</h4>
+            <ol class="compact-steps">
+              <li>Open your chosen issue in <strong>My work</strong> and select <strong>New session</strong>.</li>
+              <li>Choose a <strong>new worktree</strong> when prompted.</li>
+              <li>Use <strong>Interactive</strong> mode and GPT-5.3-Codex, or Auto as the fallback.</li>
+              <li>Send the implementation prompt below.</li>
+              <li>Review the diff and verify the feature in the integrated browser.</li>
+            </ol>
+            <div class="prompt-card">
+              <div class="prompt-label"><span>✦</span> Implement the issue</div>
+              <code>Implement this issue completely. Keep the single-file, dependency-free design, test the behavior in the integrated browser, and summarize the changes when finished.</code>
+              <button class="copy-button" type="button" data-copy-target>Copy prompt</button>
+            </div>
+            <label class="section-complete"><input class="progress-check" type="checkbox" data-task="issue"><span class="custom-check"></span>Issue implemented and verified</label>
+          </div>
+        </section>
+
+        <section class="tour-section" id="review-loop">
+          <div class="tour-marker"><span>05</span></div>
+          <div class="tour-content">
+            <div class="tour-label">Review</div>
+            <h3>Complete the Copilot review loop</h3>
+            <ol class="compact-steps">
+              <li>Select <strong>Create PR</strong> in the session toolbar.</li>
+              <li>Review the generated title and description, then create the pull request.</li>
+              <li>Open it on GitHub and request <strong>Copilot</strong> from the Reviewers menu.</li>
+              <li>Read every comment in the <strong>Files changed</strong> tab.</li>
+              <li>For up to two actionable comments, use the Copilot <strong>Fix</strong> action in the app.</li>
+              <li>Review each change, retest it, reply with what changed, and resolve the conversation.</li>
+            </ol>
+            <p class="note">If Copilot leaves fewer than two actionable comments, fix all it provides—don’t manufacture unnecessary changes.</p>
+            <label class="section-complete"><input class="progress-check" type="checkbox" data-task="reviewed"><span class="custom-check"></span>Pull request reviewed</label>
+          </div>
+        </section>
+
+        <section class="tour-section" id="automation">
+          <div class="tour-marker"><span>06</span></div>
+          <div class="tour-content">
+            <div class="tour-label">Automate</div>
+            <h3>Schedule weekly issue triage</h3>
+            <ol class="compact-steps">
+              <li>Open <strong>Automations</strong> and choose the template for a new weekly automation.</li>
+              <li>Enter the prompt below.</li>
+              <li>Set session mode and model to <strong>Autopilot</strong> and <strong>Auto</strong>.</li>
+              <li>Select the <code>space-quiz</code> project.</li>
+              <li>Open the <strong>Create</strong> dropdown and choose <strong>Create and run</strong>.</li>
+            </ol>
+            <div class="prompt-card">
+              <div class="prompt-label"><span>⚡</span> Weekly automation</div>
+              <code>Reviews the latest GitHub issues created and are open in the last week, and provide a summary table ranked by severity and priority</code>
+              <button class="copy-button" type="button" data-copy-target>Copy prompt</button>
+            </div>
+            <label class="section-complete"><input class="progress-check" type="checkbox" data-task="automated"><span class="custom-check"></span>Automation created and run</label>
+          </div>
+        </section>
+
+        <section class="tour-section last" id="canvas">
+          <div class="tour-marker"><span>07</span></div>
+          <div class="tour-content">
+            <div class="tour-label">Canvas</div>
+            <h3>Kick off work from a Kanban Canvas</h3>
+            <p>A Canvas is a shared, bidirectional surface where you and an agent can read and update the same plan, board, checklist, or dashboard.</p>
+            <ol class="compact-steps">
+              <li>Browse the <a href="https://awesome-copilot.github.com/extensions/" target="_blank" rel="noopener noreferrer">Canvas extensions gallery</a>.</li>
+              <li>Open the <a href="https://awesome-copilot.github.com/extension/accessibility-kanban/" target="_blank" rel="noopener noreferrer">Repository Issues Kanban extension</a>.</li>
+              <li>Select <strong>Install in GitHub Copilot app</strong> and approve it.</li>
+              <li>In <strong>Customize → Canvas</strong>, confirm the extension is installed.</li>
+              <li>Select <strong>New session</strong> for the Canvas and choose <code>space-quiz</code>.</li>
+              <li>Explore the board, then drag an issue card into the active-work column.</li>
+              <li>Open the automatically generated session and confirm the issue context is ready.</li>
+            </ol>
+            <label class="section-complete"><input class="progress-check" type="checkbox" data-task="canvas"><span class="custom-check"></span>Canvas extension explored</label>
+          </div>
+        </section>
+
+        <section class="lab-section finish-section" id="resources">
+          <div class="section-kicker">04 · Review & resources</div>
+          <div class="finish-badge">✦</div>
+          <h2>You’ve completed the app tour.</h2>
+          <p class="section-intro">You directed an agent through the full development loop—from an empty folder to planned work, an isolated implementation, code review, automation, and a visual Canvas workflow.</p>
+          <div class="recap-grid">
+            <div><span>01</span><strong>Created</strong><small>A local project in Interactive mode</small></div>
+            <div><span>02</span><strong>Built</strong><small>A quiz with live browser feedback</small></div>
+            <div><span>03</span><strong>Published</strong><small>A repository and focused backlog</small></div>
+            <div><span>04</span><strong>Shipped</strong><small>An issue through PR review</small></div>
+            <div><span>05</span><strong>Automated</strong><small>Weekly issue triage</small></div>
+            <div><span>06</span><strong>Explored</strong><small>A shared Kanban Canvas</small></div>
+          </div>
+
+          <h3 class="resource-heading">Keep exploring</h3>
+          <div class="resource-grid">
+            <a href="https://docs.github.com/copilot/concepts/agents/github-copilot-app" target="_blank" rel="noopener noreferrer"><span>⌘</span><div><strong>About the Copilot app</strong><small>Concepts and capabilities</small></div><b>↗</b></a>
+            <a href="https://docs.github.com/copilot/how-tos/github-copilot-app/getting-started" target="_blank" rel="noopener noreferrer"><span>→</span><div><strong>Getting started</strong><small>Official setup guide</small></div><b>↗</b></a>
+            <a href="https://docs.github.com/copilot/how-tos/github-copilot-app/agent-sessions" target="_blank" rel="noopener noreferrer"><span>◫</span><div><strong>Agent sessions</strong><small>Work with isolated sessions</small></div><b>↗</b></a>
+            <a href="https://docs.github.com/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests" target="_blank" rel="noopener noreferrer"><span>⌁</span><div><strong>Issues & pull requests</strong><small>Manage work in the app</small></div><b>↗</b></a>
+            <a href="https://docs.github.com/copilot/concepts/code-review/code-review" target="_blank" rel="noopener noreferrer"><span>✓</span><div><strong>Copilot code review</strong><small>Request and resolve feedback</small></div><b>↗</b></a>
+            <a href="https://docs.github.com/copilot/how-tos/github-copilot-app/working-with-canvas-extensions" target="_blank" rel="noopener noreferrer"><span>◇</span><div><strong>Canvas extensions</strong><small>Build visual workflows</small></div><b>↗</b></a>
+          </div>
+          <label class="completion-row final-check"><input class="progress-check" type="checkbox" data-task="complete"><span class="custom-check"></span><span><strong>Mark the lab complete</strong><small>Nice work—your progress is saved in this browser.</small></span></label>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <div class="footer-brand"><span>✦</span><div><strong>GitHub Copilot App Lab</strong><small>Learn the agentic development workflow.</small></div></div>
+      <p>Adapted from the <a href="https://github.com/jamesmontemagno/ndc-oslo-copilot-workshop" target="_blank" rel="noopener noreferrer">NDC Oslo Copilot Workshop</a> · <a href="https://github.com/github-samples/copilot-workshops" target="_blank" rel="noopener noreferrer">Source workshop</a></p>
+    </footer>
+  </body>
+</html>
