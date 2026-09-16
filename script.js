@@ -43,14 +43,15 @@ themeToggle.addEventListener("click", () => {
 document.querySelectorAll(".copy-button").forEach((button) => {
   button.addEventListener("click", async () => {
     const prompt = button.dataset.copy || button.closest(".prompt-card").querySelector("code").textContent.trim();
+    const original = button.dataset.label ?? button.textContent;
+    button.dataset.label = original;
     try {
       await navigator.clipboard.writeText(prompt);
-      const original = button.textContent;
       button.textContent = "Copied!";
-      setTimeout(() => { button.textContent = original; }, 1600);
     } catch {
-      button.textContent = "Select text to copy";
+      button.textContent = "Copy failed";
     }
+    setTimeout(() => { button.textContent = original; }, 1600);
   });
 });
 
