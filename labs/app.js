@@ -1,4 +1,4 @@
-import { sharedOverview, prompt, check, modelPanel, icon, numberSections, shot, links } from "./shared.js";
+import { sharedOverview, prompt, check, modelPanel, icon, numberSections, shot, links, routeTracker } from "./shared.js";
 import { art } from "./art.js";
 
 export const appLab = {
@@ -42,13 +42,12 @@ export const appLab = {
   ],
 
   renderResources() {
-    return `<section class="lab-section finish-section" id="resources"><div class="section-kicker">${String(this.sections.length + 2).padStart(2, "0")} · Review &amp; resources</div><div class="finish-badge">${icon("ship")}</div><h2>You’ve completed the app tour.</h2><p class="section-intro">You built, published, planned, reviewed, automated, went remote, and explored a shared Canvas workflow.</p><div class="recap-grid"><div><span>01</span><strong>Created</strong><small>A local project</small></div><div><span>02</span><strong>Built</strong><small>A live browser quiz</small></div><div><span>03</span><strong>Shipped</strong><small>A reviewed PR</small></div></div>${check("complete", "Mark the lab complete", "Progress is saved for this product in this browser.")}${links("Keep going", [
+    return `<section class="lab-section finish-section" id="resources"><div class="section-kicker">${String(this.sections.length + 2).padStart(2, "0")} · Review &amp; resources</div><div class="finish-badge">${icon("ship")}</div><h2>You’ve completed the app tour.</h2><p class="section-intro">You built, published, planned, reviewed, automated, went remote, and explored a shared Canvas workflow.</p><div class="recap-grid"><div><span>01</span><strong>Created</strong><small>A local project</small></div><div><span>02</span><strong>Built</strong><small>A live browser quiz</small></div><div><span>03</span><strong>Shipped</strong><small>A reviewed PR</small></div></div>${check("complete", "Mark the lab complete", "Progress is saved for this product in this browser.")}${routeTracker()}${links("Keep going", [
       ["Download the app", "https://gh.io/app", "Windows, macOS, and Linux builds"],
       ["Copilot app docs", "https://docs.github.com/copilot", "Sessions, modes, and everything the app can do"],
       ["Canvas extensions gallery", "https://awesome-copilot.github.com/extensions/", "Install a Canvas or build your own"],
       ["Copilot plans", "https://github.com/features/copilot/plans", "Free, Pro, Business, and Enterprise"],
-      ["Best practices", "https://docs.github.com/copilot/get-started/best-practices", "Write prompts that hold up on real code"],
-      ["Try the CLI route next", "#overview", "Same project, terminal-first loop"]
+      ["Best practices", "https://docs.github.com/copilot/get-started/best-practices", "Write prompts that hold up on real code"]
     ])}</section>`;
   },
 

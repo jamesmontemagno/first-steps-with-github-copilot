@@ -1,4 +1,4 @@
-import { sharedOverview, prompt, check, modelPanel, icon, numberSections, shot, links } from "./shared.js";
+import { sharedOverview, prompt, check, modelPanel, icon, numberSections, shot, links, routeTracker } from "./shared.js";
 import { art } from "./art.js";
 
 export const vscodeLab = {
@@ -36,7 +36,7 @@ export const vscodeLab = {
   ],
 
   renderResources() {
-    return `<section class="lab-section finish-section" id="resources"><div class="section-kicker">${String(this.sections.length + 2).padStart(2, "0")} · Review &amp; resources</div><div class="finish-badge">${icon("preview")}</div><h2>You’ve completed the VS Code route.</h2><p class="section-intro">You built in the editor, captured instructions, tested in the integrated browser, planned before editing, merged with GitHub tools, and delegated the next idea to a cloud session.</p><div class="recap-grid"><div><span>01</span><strong>Built</strong><small>Then tested</small></div><div><span>02</span><strong>Planned</strong><small>Before editing</small></div><div><span>03</span><strong>Delegated</strong><small>To a cloud session</small></div></div>${check("complete", "Mark the lab complete", "Progress is saved for VS Code only.")}${links("Keep going", [
+    return `<section class="lab-section finish-section" id="resources"><div class="section-kicker">${String(this.sections.length + 2).padStart(2, "0")} · Review &amp; resources</div><div class="finish-badge">${icon("preview")}</div><h2>You’ve completed the VS Code route.</h2><p class="section-intro">You built in the editor, captured instructions, tested in the integrated browser, planned before editing, merged with GitHub tools, and delegated the next idea to a cloud session.</p><div class="recap-grid"><div><span>01</span><strong>Built</strong><small>Then tested</small></div><div><span>02</span><strong>Planned</strong><small>Before editing</small></div><div><span>03</span><strong>Delegated</strong><small>To a cloud session</small></div></div>${check("complete", "Mark the lab complete", "Progress is saved for VS Code only.")}${routeTracker()}${links("Keep going", [
       ["Copilot in VS Code", "https://code.visualstudio.com/docs/copilot/overview", "Chat, agent mode, and editor features"],
       ["GitHub Pull Requests extension", "https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github", "Issues and pull requests in the sidebar"],
       ["MCP servers in VS Code", "https://code.visualstudio.com/docs/copilot/chat/mcp-servers", "Add tools your agent can call"],

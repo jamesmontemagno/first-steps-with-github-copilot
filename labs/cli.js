@@ -1,4 +1,4 @@
-import { sharedOverview, prompt, check, modelPanel, icon, numberSections, links } from "./shared.js";
+import { sharedOverview, prompt, check, modelPanel, icon, numberSections, links, routeTracker } from "./shared.js";
 import { art } from "./art.js";
 
 export const cliLab = {
@@ -37,7 +37,7 @@ export const cliLab = {
   ],
 
   renderResources() {
-    return `<section class="lab-section finish-section" id="resources"><div class="section-kicker">${String(this.sections.length + 2).padStart(2, "0")} · Review &amp; resources</div><div class="finish-badge">${icon("terminal")}</div><h2>You’ve completed the CLI route.</h2><p class="section-intro">You built, reviewed diffs, published, ran sessions in parallel, planned before editing, delegated, resumed, and merged a pull request without leaving the terminal.</p><div class="recap-grid"><div><span>01</span><strong>Built</strong><small>Diff reviewed</small></div><div><span>02</span><strong>Planned</strong><small>Before editing</small></div><div><span>03</span><strong>Merged</strong><small>With /pr agentmerge</small></div></div>${check("complete", "Mark the lab complete", "Progress is saved for Copilot CLI only.")}${links("Keep going", [
+    return `<section class="lab-section finish-section" id="resources"><div class="section-kicker">${String(this.sections.length + 2).padStart(2, "0")} · Review &amp; resources</div><div class="finish-badge">${icon("terminal")}</div><h2>You’ve completed the CLI route.</h2><p class="section-intro">You built, reviewed diffs, published, ran sessions in parallel, planned before editing, delegated, resumed, and merged a pull request without leaving the terminal.</p><div class="recap-grid"><div><span>01</span><strong>Built</strong><small>Diff reviewed</small></div><div><span>02</span><strong>Planned</strong><small>Before editing</small></div><div><span>03</span><strong>Merged</strong><small>With /pr agentmerge</small></div></div>${check("complete", "Mark the lab complete", "Progress is saved for Copilot CLI only.")}${routeTracker()}${links("Keep going", [
       ["Install Copilot CLI", "https://docs.github.com/copilot/how-tos/set-up/install-copilot-cli", "Setup for macOS, Windows, and Linux"],
       ["CLI documentation", "https://docs.github.com/copilot/concepts/agents/about-copilot-cli", "Every slash command and flag"],
       ["GitHub CLI", "https://cli.github.com/", "gh, for repositories and pull requests"],

@@ -19,7 +19,8 @@ const icons = {
   plan: '<path d="M5 4h14v16H5Z"/><path d="M9 9h6M9 13h6M9 17h3"/>',
   cloud: '<path d="M7 18a4 4 0 0 1 .6-8 5.5 5.5 0 0 1 10.6 1.6A3.7 3.7 0 0 1 17.5 18Z"/>',
   book: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5Z"/><path d="M20 18v3H6.5"/>',
-  code: '<path d="m9 8-4 4 4 4M15 8l4 4-4 4"/>'
+  code: '<path d="m9 8-4 4 4 4M15 8l4 4-4 4"/>',
+  check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>'
 };
 
 export function icon(name) {
@@ -38,6 +39,11 @@ export function check(task, title, detail = "") {
 export function shot(name, alt, caption) {
   const src = `assets/shots/${name}.png`;
   return `<figure class="shot-figure is-empty" data-shot="${name}"><img src="${src}" alt="${alt}" loading="lazy" decoding="async"><div class="shot-slot"><strong>Screenshot slot</strong><code>${src}</code><small>${alt}</small></div><figcaption>${caption}</figcaption></figure>`;
+}
+
+// Filled in by script.js once it knows the saved progress for every route.
+export function routeTracker() {
+  return `<div class="route-tracker" id="route-tracker"></div>`;
 }
 
 export function links(title, items) {

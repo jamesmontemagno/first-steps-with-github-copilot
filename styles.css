@@ -151,6 +151,30 @@ h1 span { color: transparent; background: linear-gradient(100deg, var(--purple-b
 .route-card[aria-pressed="true"] .route-icon { background: linear-gradient(135deg, var(--purple), var(--blue)); color: #fff; }
 .route-card[aria-pressed="true"]::after { content: "Your route"; position: absolute; top: 13px; right: 14px; color: var(--purple-bright); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .route-note { margin: -20px 0 30px; color: var(--subtle); font-size: 11.5px; }
+.route-badge { display: none; align-items: center; gap: 4px; color: var(--green); font-size: 9.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.route-badge svg.i { width: 11px; height: 11px; stroke-width: 2.6; }
+.route-card.is-done .route-badge { position: absolute; right: 14px; bottom: 14px; display: inline-flex; }
+.route-card.is-done[aria-pressed="false"] { border-color: color-mix(in srgb, var(--green) 45%, var(--border)); }
+.route-card.is-done .route-icon { color: var(--green); }
+.route-card.is-done[aria-pressed="true"] .route-icon { color: #fff; }
+
+/* Cross-route tracker on the finish screen */
+.route-tracker { margin-top: 34px; text-align: left; }
+.route-tracker h3 { margin: 0 0 6px; font-size: 13px; letter-spacing: -.01em; }
+.route-tracker-intro { margin: 0 0 14px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.route-tracker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.route-status { position: relative; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; padding: 15px 16px; text-align: left; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; cursor: pointer; transition: border-color .15s ease, transform .15s ease; }
+.route-status:hover { border-color: var(--purple); transform: translateY(-2px); }
+.route-status:focus-visible { outline: 2px solid var(--purple-bright); outline-offset: 3px; }
+.route-status .route-icon { display: grid; place-items: center; width: 28px; height: 28px; color: var(--purple-bright); background: var(--surface-2); border-radius: 8px; }
+.route-status .route-icon svg.i { width: 15px; height: 15px; }
+.route-status b { color: var(--text); font-size: 12.5px; }
+.route-status small { color: var(--subtle); font-size: 10.5px; }
+.route-status.is-current { cursor: default; border-color: var(--purple); }
+.route-status.is-current:hover { transform: none; }
+.route-status.is-done { border-color: color-mix(in srgb, var(--green) 45%, var(--border)); }
+.route-status.is-done .route-icon { color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); }
+.route-status.is-done .route-badge { position: absolute; top: 15px; right: 14px; display: inline-flex; }
 
 .model-panel { margin: 20px 0 30px; padding: 17px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; }
 .model-panel strong { font-size: 12px; }
@@ -327,7 +351,7 @@ footer a { color: var(--muted); }
   .hero { min-height: auto; padding: 65px 20px; }.app-window { display: none; }
   .lab-layout { display: block; padding: 0 20px; }.lab-nav { display: none; }
   .lab-section { padding: 70px 0; }.outcome-grid, .check-grid, .recap-grid { grid-template-columns: 1fr; }
-  .resource-grid, .route-picker { grid-template-columns: 1fr; }
+  .resource-grid, .route-picker, .route-tracker-grid { grid-template-columns: 1fr; }
   .route-card { min-height: 0; }
   .split-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
   .model-panel ol { grid-template-columns: 1fr; }
