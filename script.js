@@ -107,11 +107,6 @@ function render() {
   document.querySelector("#reset-progress").onclick = () => {
     if (confirm(`Reset ${product.name} progress?`)) { localStorage.removeItem(progressKey(product.id)); render(); }
   };
-  document.querySelectorAll(".shot-figure img").forEach((image) => {
-    const done = () => image.closest(".shot-figure").classList.remove("is-empty");
-    if (image.complete && image.naturalWidth) done();
-    image.addEventListener("load", done);
-  });
   observeSections();
   updateProgress();
 }

@@ -236,6 +236,58 @@ const scenes = {
     <text class="t-xs accent" x="236" y="266">Every issue and pull request you care about, without leaving the app.</text>
   `),
 
+  appAutomations: () => svg(300, "The Automations view in the Copilot app with weekly automation cards", `
+    <rect class="rail" x="0.5" y="0.5" width="212" height="299" rx="12"/>
+    <circle class="dot" cx="28" cy="28" r="5"/><circle class="dot" cx="46" cy="28" r="5"/><circle class="dot" cx="64" cy="28" r="5"/>
+    <rect class="stroke" x="84" y="20" width="18" height="16" rx="3"/><path class="stroke" d="M91 20v16"/>
+    <circle class="stroke" cx="130" cy="28" r="6"/><path class="stroke" d="m135 33 4 4"/>
+    <path class="stroke" d="M162 22l-6 6 6 6M180 22l6 6-6 6"/>
+    <path class="stroke" d="M28 66h16M36 58v16"/><text class="t-sm txt" x="56" y="71">New</text>
+    <path class="stroke" d="M28 96h6v6h-6zM28 106h6v4h-6zM40 99h10M40 108h10"/>
+    <text class="t-sm mut" x="58" y="105">My work</text>
+    <rect class="card sel" x="14" y="118" width="184" height="30" rx="8"/>
+    <rect class="stroke" x="27" y="126" width="15" height="13" rx="2.5"/><path class="stroke" d="M27 130h15M31 124v4M38 124v4"/>
+    <text class="t-sm txt" x="58" y="137">Automations</text>
+    <rect class="stroke" x="27" y="158" width="7" height="7" rx="1.5"/><rect class="stroke" x="36" y="158" width="7" height="7" rx="1.5"/><rect class="stroke" x="27" y="167" width="7" height="7" rx="1.5"/>
+    <text class="t-sm mut" x="58" y="170">Customize</text>
+    <path class="rule" d="M14 194h184"/>
+    <text class="t-xs mut" x="28" y="218">Projects</text>
+    <path class="stroke" d="M158 213h12M160 217h8M162 221h4M180 217h12M186 211v12"/>
+    <rect class="card" x="14" y="232" width="184" height="26" rx="7"/>
+    <text class="t-xs mut" x="28" y="249">space-quiz</text>
+    <text class="t-sm txt" x="236" y="34">Automations</text>
+    <rect class="chip" x="430" y="18" width="88" height="24" rx="7"/><text class="t-xs txt" x="474" y="34" text-anchor="middle">Templates</text>
+    <rect class="cta" x="526" y="18" width="110" height="24" rx="7"/><text class="t-xs inv" x="581" y="34" text-anchor="middle">New automation</text>
+    <rect class="chip sel" x="236" y="56" width="42" height="22" rx="7"/><text class="t-xs accent" x="257" y="71" text-anchor="middle">All</text>
+    <text class="t-xs mut" x="294" y="71">Local</text>
+    <text class="t-xs mut" x="338" y="71">Cloud</text>
+    <rect class="input" x="440" y="56" width="196" height="22" rx="7"/>
+    <circle class="stroke" cx="456" cy="67" r="4"/><path class="stroke" d="m459 70 3 3"/>
+    <text class="t-xs mut" x="470" y="71">Search automations…</text>
+    <path class="rule" d="M224 92h416"/>
+    <text class="t-sm txt" x="236" y="118">Your automations</text>
+    <text class="t-xs mut" x="236" y="136">Use agents to handle recurring work on a cadence you choose.</text>
+    <rect class="card" x="236" y="150" width="192" height="112" rx="9"/>
+    <text class="t-sm txt" x="250" y="176">Issue triage</text>
+    <rect class="chip alt" x="356" y="163" width="58" height="18" rx="6"/><text class="t-xs blue" x="385" y="176" text-anchor="middle">Weekly</text>
+    <text class="t-xs mut" x="250" y="198">Review the latest GitHub issues</text>
+    <text class="t-xs mut" x="250" y="214">and rank them by severity…</text>
+    <path class="rule" d="M236 230h192"/>
+    <text class="t-xs mut" x="250" y="250">space-quiz · Local</text>
+    <circle class="ok-fill" cx="356" cy="246" r="5"/><path class="tick" d="m353.6 246 1.8 1.8 3.2-3.4"/>
+    <text class="t-xs mut" x="366" y="250">2d ago</text>
+    <path class="play" d="M408 240v12l10-6Z"/>
+    <rect class="card" x="444" y="150" width="192" height="112" rx="9"/>
+    <text class="t-sm txt" x="458" y="176">Accessibility audit</text>
+    <rect class="chip alt" x="564" y="163" width="58" height="18" rx="6"/><text class="t-xs blue" x="593" y="176" text-anchor="middle">Weekly</text>
+    <text class="t-xs mut" x="458" y="198">Review PRs merged this week</text>
+    <text class="t-xs mut" x="458" y="214">and summarize a11y issues…</text>
+    <path class="rule" d="M444 230h192"/>
+    <text class="t-xs mut" x="458" y="250">space-quiz · Local</text>
+    <path class="play" d="M616 240v12l10-6Z"/>
+    <text class="t-xs accent" x="236" y="286">Each run opens its own session, so an automation never disturbs your work.</text>
+  `),
+
   appCanvas: () => svg(300, "A Kanban canvas with issue cards, one being dragged from Backlog into Plan", `
     ${chrome(20, 18, 600, "Repository Issues Kanban")}
     <rect class="panel" x="20" y="44" width="600" height="238"/>

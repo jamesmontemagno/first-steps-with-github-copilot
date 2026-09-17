@@ -44,7 +44,6 @@ labs/app.js            # GitHub Copilot app lab definition
 labs/cli.js            # Copilot CLI lab definition
 labs/vscode.js         # Copilot in VS Code lab definition
 assets/favicon.svg     # Site icon
-assets/shots/          # Optional product screenshots (see below)
 .github/workflows/     # GitHub Pages deployment
 ```
 
@@ -54,11 +53,10 @@ The GitHub Pages workflow publishes the repository root whenever changes are pus
 
 ## Images
 
-Interface illustrations are drawn in SVG in `labs/art.js`, so they follow the theme and never go stale.
+Every interface illustration is drawn in SVG in `labs/art.js`. They inherit the site's theme variables, so
+they follow light and dark mode, stay sharp at any size, and never go stale when a product ships a redesign.
 
-Some steps also render a **screenshot slot**: a dashed placeholder naming the exact file it expects. Drop a
-PNG at that path, for example `assets/shots/app-my-work.png`, and the placeholder is replaced automatically
-on the next load. No code change is needed.
+To add one, write a new entry in the `scenes` object and call `art("sceneName", "caption")` from a lab.
 
 ## License
 

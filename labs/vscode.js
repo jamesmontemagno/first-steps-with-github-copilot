@@ -1,4 +1,4 @@
-import { sharedOverview, prompt, check, modelPanel, icon, numberSections, shot, links, routeTracker } from "./shared.js";
+import { sharedOverview, prompt, check, modelPanel, icon, numberSections, links, routeTracker } from "./shared.js";
 import { art } from "./art.js";
 
 export const vscodeLab = {

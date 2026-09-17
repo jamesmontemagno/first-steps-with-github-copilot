@@ -35,12 +35,6 @@ export function check(task, title, detail = "") {
   return `<label class="section-complete"><input class="progress-check" type="checkbox" data-task="${task}"><span class="custom-check"></span><span><strong>${title}</strong>${detail ? `<small>${detail}</small>` : ""}</span></label>`;
 }
 
-// A screenshot slot. Drop a PNG at assets/shots/<name>.png and it replaces the placeholder.
-export function shot(name, alt, caption) {
-  const src = `assets/shots/${name}.png`;
-  return `<figure class="shot-figure is-empty" data-shot="${name}"><img src="${src}" alt="${alt}" loading="lazy" decoding="async"><div class="shot-slot"><strong>Screenshot slot</strong><code>${src}</code><small>${alt}</small></div><figcaption>${caption}</figcaption></figure>`;
-}
-
 // Filled in by script.js once it knows the saved progress for every route.
 export function routeTracker() {
   return `<div class="route-tracker" id="route-tracker"></div>`;
