@@ -60,6 +60,10 @@ export function sharedOverview(lab) {
   </section>`;
 }
 
+export function numberSections(sections) {
+  return sections.map(([, , html], index) => html.replace(/__N__/g, String(index + 2).padStart(2, "0"))).join("");
+}
+
 export function modelPanel() {
   return `<div class="model-panel"><strong>Pick your model, best option first</strong><ol>${models.map(([name, reasoning]) => `<li><span>${name}</span><small>${reasoning}</small></li>`).join("")}</ol><small class="model-note">Availability depends on your plan, organization policy, and product version. Use the first option you can select.</small></div>`;
 }

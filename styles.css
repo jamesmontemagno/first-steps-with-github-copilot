@@ -126,11 +126,11 @@ h1 span { color: transparent; background: linear-gradient(100deg, var(--purple-b
 .answer { height: 25px; margin: 7px 0; border: 1px solid #444c56; background: #161b22aa; border-radius: 5px; }.answer.short { width: 75%; }
 
 .lab-layout { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 215px minmax(0, 820px); gap: 75px; padding: 0 24px; }
-.lab-nav { position: sticky; top: calc(var(--header-height) + 36px); align-self: start; padding-top: 70px; height: calc(100vh - var(--header-height) - 36px); }
-.nav-heading { margin-bottom: 14px; color: var(--subtle); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-.lab-nav nav { display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+.lab-nav { position: sticky; top: calc(var(--header-height) + 36px); align-self: start; display: flex; flex-direction: column; padding-top: 70px; max-height: calc(100vh - var(--header-height) - 36px); }
+.nav-heading { flex: none; margin-bottom: 14px; color: var(--subtle); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.lab-nav nav { display: flex; flex-direction: column; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; border-left: 1px solid var(--border); }
 .lab-nav a { color: var(--muted); text-decoration: none; }
-.nav-link { display: flex; align-items: center; gap: 12px; margin-left: -1px; padding: 9px 0 9px 16px; border-left: 2px solid transparent; font-size: 13px; font-weight: 600; }
+.nav-link { display: flex; align-items: center; gap: 11px; margin-left: -1px; padding: 8px 0 8px 16px; border-left: 2px solid transparent; font-size: 12.5px; font-weight: 600; }
 .nav-link span { color: var(--subtle); font: 10px ui-monospace, monospace; }
 .nav-link:hover, .nav-link.active { color: var(--text); border-color: var(--purple); }
 .nav-link.active span { color: var(--purple-bright); }
@@ -192,6 +192,9 @@ svg.spark { width: 1em; height: 1em; fill: currentColor; display: block; }
 .workspace-list > div > span svg.i { width: 15px; height: 15px; }
 .install-logo svg.i, .finish-badge svg.i { width: 24px; height: 24px; stroke-width: 1.6; }
 .prompt-label svg.i { width: 13px; height: 13px; vertical-align: -2px; }
+.command-block { margin: 14px 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); overflow-x: auto; }
+.command-block code { display: block; padding: 0; border: 0; background: none; white-space: pre; font-size: 12.5px; line-height: 1.85; color: var(--text); }
+
 .doc-figure { margin: 22px 0; padding: 0; }
 .doc-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
 .doc-figure figcaption { margin-top: 9px; color: var(--subtle); font-size: 11.5px; line-height: 1.55; }
