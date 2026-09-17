@@ -35,15 +35,15 @@ Open <http://localhost:8000>.
 ## Project structure
 
 ```text
-index.html             # Shared shell and product switcher
+index.html             # Shared shell (the route picker renders inside the lab)
 styles.css             # Shared theme, layout, and components
 script.js              # Shared rendering, progress, copy, theme, and navigation
-labs/shared.js         # Shared lab helpers and model preferences
+labs/shared.js         # Shared lab helpers, route picker, and model preferences
+labs/art.js            # Hand-drawn SVG interface scenes
 labs/app.js            # GitHub Copilot app lab definition
 labs/cli.js            # Copilot CLI lab definition
 labs/vscode.js         # Copilot in VS Code lab definition
 assets/favicon.svg     # Site icon
-assets/docs/           # Screenshots from GitHub Docs (CC BY 4.0)
 .github/workflows/     # GitHub Pages deployment
 ```
 
@@ -51,11 +51,12 @@ assets/docs/           # Screenshots from GitHub Docs (CC BY 4.0)
 
 The GitHub Pages workflow publishes the repository root whenever changes are pushed to `main`. Enable GitHub Actions as the Pages source in repository settings.
 
-## Image attribution
+## Images
 
-Screenshots in `assets/docs/` come from [github/docs](https://github.com/github/docs) and are used under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Copyright GitHub, Inc. No changes were made to
-the images.
+Every interface illustration is drawn in SVG in `labs/art.js`. They inherit the site's theme variables, so
+they follow light and dark mode, stay sharp at any size, and never go stale when a product ships a redesign.
+
+To add one, write a new entry in the `scenes` object and call `art("sceneName", "caption")` from a lab.
 
 ## License
 
