@@ -11,7 +11,7 @@ const main = document.querySelector("#main-content");
 const progressLabel = document.querySelector("#progress-label");
 const progressBar = document.querySelector("#progress-bar");
 const themeToggle = document.querySelector("#theme-toggle");
-const mobileSwitcher = document.querySelector("#product-switcher-mobile");
+const productSwitcher = document.querySelector("#product-switcher");
 
 function readProgress() {
   try { return JSON.parse(localStorage.getItem(`first-steps-progress-${product.id}`)) || []; } catch { return []; }
@@ -24,13 +24,11 @@ function updateProgress() {
   progressBar.style.width = `${checks.length ? completed.length / checks.length * 100 : 0}%`;
 }
 function renderNav() {
-  const switcher = Object.values(labs).map((lab) => `<button type="button" class="${lab.id === product.id ? "selected" : ""}" data-product="${lab.id}">${lab.name}</button>`).join("");
-  nav.innerHTML = `<div class="product-switcher">${switcher}</div>` +
-    `<a href="#overview" class="nav-link active"><span>01</span>Overview</a>` +
+  productSwitcher.innerHTML = Object.values(labs).map((lab) => `<button type="button" aria-pressed="${lab.id === product.id}" data-product="${lab.id}">${lab.name}</button>`).join("");
+  nav.innerHTML = `<a href="#overview" class="nav-link active"><span>01</span>Overview</a>` +
     product.sections.map(([id, label], index) => `<a href="#${id}" class="nav-link"><span>${String(index + 2).padStart(2, "0")}</span>${label}</a>`).join("") +
     `<a href="#resources" class="nav-link"><span>${String(product.sections.length + 2).padStart(2, "0")}</span>Review & resources</a>`;
-  mobileSwitcher.innerHTML = switcher;
-  document.querySelectorAll("[data-product]").forEach((button) => button.addEventListener("click", () => {
+  productSwitcher.querySelectorAll("[data-product]").forEach((button) => button.addEventListener("click", () => {
     localStorage.setItem(PRODUCT_KEY, button.dataset.product);
     product = labs[button.dataset.product];
     render();

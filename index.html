@@ -17,13 +17,16 @@
     <a class="skip-link" href="#main-content">Skip to lab content</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="First Steps with GitHub Copilot home">
-        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M7 17.5 10.5 10 17 7l3 3 3-3 6.5 3 3.5 7.5-2 11L24 33h-8l-7-4.5-2-11Z"/><circle cx="15" cy="19" r="2"/><circle cx="25" cy="19" r="2"/><path d="M15 26c3 2 7 2 10 0"/></svg>
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect class="mark-plate" x="2.5" y="2.5" width="35" height="35" rx="11.5"/><path class="mark-spark" d="M18 9.5c1 5 2.9 7.7 8 8.7-5.1 1-7 3.7-8 8.7-1-5-2.9-7.7-8-8.7 5.1-1 7-3.7 8-8.7Z"/><path class="mark-spark-small" d="M28.5 22.5c.5 2.3 1.4 3.6 3.7 4.1-2.3.5-3.2 1.8-3.7 4.1-.5-2.3-1.4-3.6-3.7-4.1 2.3-.5 3.2-1.8 3.7-4.1Z"/></svg>
         <span>First Steps <strong>with GitHub Copilot</strong></span>
       </a>
+      <div id="product-switcher" class="product-switcher" role="group" aria-label="Choose a Copilot product"></div>
       <div class="header-actions">
-        <div id="product-switcher-mobile" class="product-switcher-header" role="group" aria-label="Choose a Copilot product"></div>
         <div class="progress-pill" aria-live="polite"><span id="progress-label">0 of 0 complete</span><span class="progress-track"><span id="progress-bar"></span></span></div>
-        <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light theme"><span class="moon-icon">☾</span><span class="sun-icon">☀</span></button>
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light theme">
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+        </button>
       </div>
     </header>
     <section class="hero" id="top">
@@ -34,12 +37,12 @@
         <p class="hero-lede">Choose the surface you use, then take a tiny space quiz from first prompt to a tested, publishable project.</p>
         <div class="hero-actions"><a class="button button-primary" href="#overview">Start the lab <span aria-hidden="true">→</span></a><span class="duration">About 60–90 minutes</span></div>
       </div>
-      <div class="app-window" aria-label="Stylized preview of a Copilot session"><div class="window-bar"><span></span><span></span><span></span><strong id="preview-title">space-quiz</strong></div><div class="window-body"><div class="mini-sidebar"><div class="mini-logo">✦</div><span class="active"></span><span></span><span></span><span></span></div><div class="session-preview"><div class="session-label">SESSION · INTERACTIVE</div><div class="chat-bubble">Create a space exploration quiz with 10 questions...</div><div class="agent-row"><span class="agent-spark">✦</span><div><strong>Copilot</strong><p id="preview-copy">I’ll build a polished, dependency-free quiz and open it in the browser.</p></div></div><div class="file-change"><span>+</span> index.html <em>created</em></div><div class="typing"><i></i><i></i><i></i></div></div><div class="browser-preview"><div class="browser-bar"><span></span><span>index.html</span></div><div class="planet">🪐</div><strong>SPACE QUIZ</strong><small>Question 3 of 10</small><div class="quiz-progress"><span></span></div><div class="answer"></div><div class="answer"></div><div class="answer short"></div></div></div></div>
+      <div class="app-window" aria-label="Stylized preview of a Copilot session"><div class="window-bar"><span></span><span></span><span></span><strong id="preview-title">space-quiz</strong></div><div class="window-body"><div class="mini-sidebar"><div class="mini-logo"><svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1.1 5.2 3.8 7.9 9 9-5.2 1.1-7.9 3.8-9 9-1.1-5.2-3.8-7.9-9-9 5.2-1.1 7.9-3.8 9-9Z"/></svg></div><span class="active"></span><span></span><span></span><span></span></div><div class="session-preview"><div class="session-label">SESSION · INTERACTIVE</div><div class="chat-bubble">Create a space exploration quiz with 10 questions...</div><div class="agent-row"><span class="agent-spark"><svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1.1 5.2 3.8 7.9 9 9-5.2 1.1-7.9 3.8-9 9-1.1-5.2-3.8-7.9-9-9 5.2-1.1 7.9-3.8 9-9Z"/></svg></span><div><strong>Copilot</strong><p id="preview-copy">I’ll build a polished, dependency-free quiz and open it in the browser.</p></div></div><div class="file-change"><span>+</span> index.html <em>created</em></div><div class="typing"><i></i><i></i><i></i></div></div><div class="browser-preview"><div class="browser-bar"><span></span><span>index.html</span></div><div class="planet">🪐</div><strong>SPACE QUIZ</strong><small>Question 3 of 10</small><div class="quiz-progress"><span></span></div><div class="answer"></div><div class="answer"></div><div class="answer short"></div></div></div></div>
     </section>
     <div class="lab-layout">
       <aside class="lab-nav" aria-label="Lab navigation"><div class="nav-heading">Your route</div><nav id="lab-nav"></nav><button class="reset-button" id="reset-progress" type="button">Reset this lab</button></aside>
       <main id="main-content"></main>
     </div>
-    <footer><div class="footer-brand"><span>✦</span><div><strong>First Steps with GitHub Copilot</strong><small>Learn by building, testing, and shipping.</small></div></div><p>Zero dependencies · Static HTML, CSS &amp; JavaScript</p></footer>
+    <footer><div class="footer-brand"><span><svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c1.1 5.2 3.8 7.9 9 9-5.2 1.1-7.9 3.8-9 9-1.1-5.2-3.8-7.9-9-9 5.2-1.1 7.9-3.8 9-9Z"/></svg></span><div><strong>First Steps with GitHub Copilot</strong><small>Learn by building, testing, and shipping.</small></div></div><p>Zero dependencies · Static HTML, CSS &amp; JavaScript<br><small>Product screenshots from <a href="https://github.com/github/docs" target="_blank" rel="noopener">github/docs</a>, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</small></p></footer>
   </body>
 </html>
