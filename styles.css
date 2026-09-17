@@ -193,7 +193,7 @@ h2 { margin: 0; font-size: clamp(36px, 5vw, 50px); line-height: 1.12; letter-spa
 .completion-row { display: flex; gap: 13px; align-items: flex-start; padding: 16px 18px; margin-top: 12px; color: var(--text); background: color-mix(in srgb, var(--green) 6%, var(--surface)); border: 1px solid color-mix(in srgb, var(--green) 30%, var(--border)); border-radius: 8px; cursor: pointer; }
 .workspace-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
 .workspace-list > div { display: flex; align-items: flex-start; gap: 13px; padding: 16px; background: var(--surface); border: 1px solid var(--border-soft); border-radius: 8px; }
-.workspace-list > div:last-child { grid-column: 1 / -1; }.workspace-list > div > span { width: 26px; height: 26px; display: grid; place-items: center; color: var(--purple-bright); background: color-mix(in srgb, var(--purple) 12%, transparent); border-radius: 6px; }
+.workspace-list > div > span { width: 26px; height: 26px; display: grid; place-items: center; color: var(--purple-bright); background: color-mix(in srgb, var(--purple) 12%, transparent); border-radius: 6px; }
 .workspace-list p { margin: 0; color: var(--muted); font-size: 11px; }.workspace-list strong { display: block; color: var(--text); font-size: 13px; }
 svg.i { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 svg.spark { width: 1em; height: 1em; fill: currentColor; display: block; }
@@ -242,6 +242,18 @@ svg.spark { width: 1em; height: 1em; fill: currentColor; display: block; }
 .art .dot.amber { fill: var(--yellow); }
 .art .dot.green { fill: var(--green); }
 .art .caret { fill: var(--purple-bright); }
+.art .mark { fill: var(--surface-2); stroke: var(--border); }
+.art .markGlyph { fill: var(--text); }
+.art .send { fill: var(--purple); }
+.art .sendGlyph { stroke: #fff; stroke-width: 1.6; fill: none; stroke-linecap: round; }
+.art .stroke { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.art .col { fill: var(--surface-2); stroke: var(--border-soft); }
+.art .col.drop { fill: color-mix(in srgb, var(--purple) 10%, var(--surface-2)); stroke: var(--purple); stroke-dasharray: 5 4; }
+.art .card.ghost { fill: transparent; stroke-dasharray: 4 3; }
+.art .card.lift { filter: drop-shadow(0 10px 18px rgba(0,0,0,.3)); }
+.art .drag { fill: none; stroke: var(--purple-bright); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.art .rule { stroke: var(--border); stroke-width: 1; }
+.art .chip.sel { fill: color-mix(in srgb, var(--purple) 16%, var(--bg-elevated)); stroke: var(--purple); }
 .art .sparkle { fill: var(--purple-bright); }
 .art text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
 .art .mono text, .art text.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -315,8 +327,8 @@ footer a { color: var(--muted); }
   .hero { min-height: auto; padding: 65px 20px; }.app-window { display: none; }
   .lab-layout { display: block; padding: 0 20px; }.lab-nav { display: none; }
   .lab-section { padding: 70px 0; }.outcome-grid, .check-grid, .recap-grid { grid-template-columns: 1fr; }
-  .workspace-list, .resource-grid, .route-picker { grid-template-columns: 1fr; }
-  .route-card { min-height: 0; }.workspace-list > div:last-child { grid-column: auto; }
+  .resource-grid, .route-picker { grid-template-columns: 1fr; }
+  .route-card { min-height: 0; }
   .split-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
   .model-panel ol { grid-template-columns: 1fr; }
   .route { overflow-x: auto; }.route i { min-width: 16px; }

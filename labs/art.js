@@ -74,7 +74,7 @@ const scenes = {
     </g>
   `),
 
-  appSession: () => svg(250, "The Copilot app session header showing folder, branch, mode, and model", `
+  appSession: () => svg(250, "The Copilot app session details panel showing folder, branch, mode, and context usage", `
     ${chrome(20, 18, 600, "GitHub Copilot")}
     <rect class="panel" x="20" y="44" width="600" height="188"/>
     <rect class="rail" x="20" y="44" width="56" height="188"/>
@@ -85,7 +85,8 @@ const scenes = {
     <rect class="chip" x="94" y="56" width="110" height="22" rx="11"/><text class="t-xs txt" x="108" y="71">space-quiz</text>
     <rect class="chip" x="214" y="56" width="74" height="22" rx="11"/><text class="t-xs ok" x="228" y="71">main</text>
     <rect class="chip" x="298" y="56" width="96" height="22" rx="11"/><text class="t-xs accent" x="312" y="71">Interactive</text>
-    <rect class="chip" x="404" y="56" width="116" height="22" rx="11"/><text class="t-xs mut" x="418" y="71">GPT-5.6 Luna</text>
+    <rect class="chip" x="404" y="56" width="128" height="22" rx="11"/><text class="t-xs mut" x="418" y="71">Context 24%</text>
+    ${bar(496, 65, 26, 5, "track")}${bar(496, 65, 7, 5, "fill")}
     <text class="t-xs mut" x="608" y="71" text-anchor="end">⌄</text>
     <rect class="bubble" x="300" y="106" width="304" height="34" rx="10"/>
     <text class="t-sm txt" x="316" y="127">Create a space exploration quiz…</text>
@@ -145,25 +146,112 @@ const scenes = {
     <text class="t-xs mut" x="336" y="208">right inside Source Control.</text>
   `),
 
-  vscodeCloud: () => svg(240, "The Copilot Chat harness picker in VS Code switching from Local to Cloud", `
+  appNewSession: () => svg(300, "The Copilot app New session screen with the prompt box and folder, mode, and agent pickers", `
+    <circle class="mark" cx="320" cy="72" r="26"/>
+    <path class="markGlyph" d="M320 54c-10 0-18 8-18 18 0 8 5 14.8 12.3 17.1 .9.2 1.2-.4 1.2-.9v-3.1c-5 1.1-6.1-2.4-6.1-2.4-.8-2.1-2-2.7-2-2.7-1.7-1.1.1-1.1.1-1.1 1.8.1 2.8 1.9 2.8 1.9 1.6 2.8 4.3 2 5.3 1.5.2-1.2.6-2 1.2-2.5-4-.5-8.2-2-8.2-8.9 0-2 .7-3.6 1.9-4.8-.2-.5-.8-2.3.2-4.8 0 0 1.5-.5 5 1.8a17 17 0 0 1 9 0c3.5-2.3 5-1.8 5-1.8 1 2.5.4 4.3.2 4.8a7 7 0 0 1 1.9 4.8c0 6.9-4.2 8.4-8.2 8.8.6.6 1.2 1.7 1.2 3.4v5.1c0 .5.3 1.1 1.2.9A18 18 0 0 0 338 72c0-10-8-18-18-18Z"/>
+    <rect class="input" x="40" y="120" width="560" height="96" rx="12"/>
+    <text class="t-sm mut" x="62" y="152">Ask anything or paste a URL. Use / for commands, &amp; sessions, # issues…</text>
+    <text class="t-sm mut" x="62" y="194">+</text>
+    <text class="t-sm txt" x="86" y="194">Interactive</text>
+    <text class="t-sm txt" x="168" y="194">Auto · Balance</text>
+    <text class="t-sm txt" x="272" y="194">Default agent</text>
+    <circle class="send" cx="574" cy="188" r="14"/>
+    <path class="sendGlyph" d="M574 182v12M569 187l5-5 5 5"/>
+    <g class="mut">
+      <path class="stroke" d="M62 236h9l2 2h9v8H62Z"/>
+      <text class="t-sm txt" x="90" y="246">space-quiz</text>
+      <rect class="stroke" x="176" y="236" width="12" height="9" rx="1.5"/>
+      <text class="t-sm txt" x="196" y="246">Local</text>
+      <circle class="stroke" cx="252" cy="238" r="2.6"/><circle class="stroke" cx="252" cy="246" r="2.6"/><path class="stroke" d="M252 241v2"/>
+      <text class="t-sm txt" x="264" y="246">main</text>
+    </g>
+    <rect class="card sel" x="330" y="228" width="270" height="26" rx="8"/>
+    <text class="t-xs accent" x="344" y="245">Start from New → Open folder</text>
+    <text class="t-xs mut" x="40" y="284">Pick the folder, the mode, and the agent before you send the first prompt.</text>
+  `),
+
+  appCanvas: () => svg(300, "A Kanban canvas with issue cards, one being dragged from Backlog into Plan", `
+    ${chrome(20, 18, 600, "Repository Issues Kanban")}
+    <rect class="panel" x="20" y="44" width="600" height="238"/>
+    <g>
+      <text class="t-xs mut" x="44" y="72">BACKLOG</text>
+      <text class="t-xs accent" x="196" y="72">PLAN</text>
+      <text class="t-xs mut" x="348" y="72">READY</text>
+      <text class="t-xs mut" x="500" y="72">IMPLEMENT</text>
+    </g>
+    <rect class="col" x="36" y="82" width="140" height="180" rx="9"/>
+    <rect class="col drop" x="188" y="82" width="140" height="180" rx="9"/>
+    <rect class="col" x="340" y="82" width="140" height="180" rx="9"/>
+    <rect class="col" x="492" y="82" width="112" height="180" rx="9"/>
+    <rect class="card" x="46" y="94" width="120" height="52" rx="8"/>
+    <text class="t-xs mut" x="60" y="114">#12</text>
+    <text class="t-sm txt" x="60" y="132">Per-question timer</text>
+    <rect class="card ghost" x="46" y="158" width="120" height="52" rx="8"/>
+    <text class="t-xs mut" x="60" y="178">#13</text>
+    <text class="t-sm mut" x="60" y="196">Review screen</text>
+    <path class="drag" d="M172 184h40"/>
+    <path class="drag" d="M206 178l8 6-8 6"/>
+    <rect class="card sel lift" x="216" y="150" width="120" height="52" rx="8"/>
+    <text class="t-xs accent" x="230" y="170">#13</text>
+    <text class="t-sm txt" x="230" y="188">Review screen</text>
+    <text class="t-xs mut" x="36" y="278">Drop a card into a lane and the app opens a session with that issue already loaded.</text>
+  `),
+
+  cliWorktree: () => svg(180, "Terminal output from the slash worktree command creating an isolated checkout", `
+    ${chrome(20, 18, 600, "copilot — /worktree")}
+    <rect class="panel" x="20" y="44" width="600" height="118"/>
+    <g class="mono">
+      <text class="t-sm accent" x="44" y="74">&gt;</text><text class="t-sm txt" x="60" y="74">/worktree</text>
+      <text class="t-xs ok" x="44" y="100">✓ Created worktree ../space-quiz-13</text>
+      <text class="t-xs mut" x="44" y="120">  branch: issue-13-review-screen</text>
+      <text class="t-xs mut" x="44" y="140">  this session now works there; main is untouched</text>
+    </g>
+  `),
+
+  vscodeInstructions: () => svg(280, "The copilot-instructions.md file open in VS Code", `
+    ${chrome(20, 18, 600, "copilot-instructions.md — space-quiz")}
+    <rect class="panel" x="20" y="44" width="600" height="218"/>
+    <rect class="rail" x="20" y="44" width="176" height="218"/>
+    <text class="t-xs mut" x="36" y="68">EXPLORER</text>
+    <text class="t-sm mut" x="36" y="92">▾ .github</text>
+    <rect class="card sel" x="44" y="100" width="144" height="22" rx="6"/>
+    <text class="t-xs txt" x="56" y="115">copilot-instructions.md</text>
+    <text class="t-sm mut" x="36" y="142">index.html</text>
+    <rect class="tab sel" x="196" y="44" width="164" height="26"/>
+    <text class="t-xs txt" x="212" y="61">copilot-instructions.md</text>
+    <g>
+      <text class="t-sm accent" x="212" y="96"># Space Quiz</text>
+      <text class="t-xs mut" x="212" y="122">Single <tspan class="txt">index.html</tspan>. No dependencies, no build step.</text>
+      <text class="t-xs mut" x="212" y="144">Every answer must be reachable by keyboard.</text>
+      <text class="t-xs mut" x="212" y="166">Respect prefers-color-scheme in both themes.</text>
+      <text class="t-sm accent" x="212" y="198">## How I like code written</text>
+      <text class="t-xs mut" x="212" y="222">Small functions, early returns, no clever one-liners.</text>
+      <text class="t-xs mut" x="212" y="244">Comment only what is genuinely surprising.</text>
+    </g>
+  `),
+  vscodeCloud: () => svg(260, "The Copilot Chat harness picker in VS Code switching from Local to Cloud", `
     ${chrome(20, 18, 600, "Copilot Chat")}
-    <rect class="panel" x="20" y="44" width="600" height="178"/>
+    <rect class="panel" x="20" y="44" width="600" height="198"/>
     <rect class="bubble" x="300" y="60" width="304" height="30" rx="10"/>
     <text class="t-sm txt" x="316" y="80">Add three new colour themes</text>
-    <rect class="card" x="36" y="104" width="300" height="52" rx="10"/>
+    <rect class="card" x="36" y="104" width="248" height="52" rx="10"/>
     <text class="t-sm txt" x="52" y="126">Working in the cloud…</text>
     <text class="t-xs mut" x="52" y="146">Follow the session on GitHub</text>
-    <rect class="input" x="36" y="172" width="568" height="34" rx="9"/>
-    <text class="t-sm mut" x="54" y="194">Ask Copilot</text>
-    <rect class="chip" x="392" y="180" width="92" height="20" rx="10"/>
-    <text class="t-xs mut" x="406" y="194">Agent ⌄</text>
-    <rect class="menu" x="388" y="94" width="200" height="76" rx="9"/>
-    <text class="t-xs mut" x="404" y="114">HARNESS</text>
-    <rect class="card" x="396" y="122" width="184" height="20" rx="6"/>
-    <text class="t-xs txt" x="410" y="136">Local · Copilot</text>
-    <rect class="card sel" x="396" y="144" width="184" height="20" rx="6"/>
-    <text class="t-xs accent" x="410" y="158">Cloud</text>
-    <text class="t-xs ok" x="568" y="158" text-anchor="end">✓</text>
+    <rect class="input" x="36" y="188" width="568" height="34" rx="9"/>
+    <text class="t-sm mut" x="54" y="210">Ask Copilot</text>
+    <rect class="chip sel" x="486" y="196" width="102" height="20" rx="10"/>
+    <text class="t-xs accent" x="500" y="210">Harness ⌄</text>
+    <rect class="menu" x="396" y="60" width="192" height="126" rx="9"/>
+    <text class="t-xs mut" x="412" y="80">Harness</text>
+    <text class="t-xs mut" x="412" y="102">Copilot</text>
+    <rect class="card" x="404" y="108" width="176" height="20" rx="6"/>
+    <text class="t-xs txt" x="418" y="122">Local</text>
+    <rect class="card sel" x="404" y="130" width="176" height="20" rx="6"/>
+    <text class="t-xs accent" x="418" y="144">Cloud</text>
+    <text class="t-xs ok" x="568" y="144" text-anchor="end">✓</text>
+    <path class="rule" d="M404 158h176"/>
+    <text class="t-xs mut" x="418" y="174">Claude</text>
+    <text class="t-xs mut" x="500" y="174">Codex</text>
   `)
 };
 
