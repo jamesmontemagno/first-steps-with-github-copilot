@@ -64,6 +64,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .brand-mark circle { fill: var(--text); }
 .brand-mark path:last-child { fill: none; stroke: var(--text); stroke-width: 1.4; stroke-linecap: round; }
 .header-actions { display: flex; align-items: center; gap: 18px; }
+.product-switcher-header { display: none; }
 .icon-button { width: 38px; height: 38px; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 8px; cursor: pointer; }
 .icon-button:hover { background: var(--surface-2); }
 .icon-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
@@ -138,6 +139,17 @@ h1 span { color: transparent; background: linear-gradient(100deg, var(--purple-b
 .nav-sub a:hover { color: var(--text); }
 .reset-button { margin: 24px 0 0 16px; padding: 0; color: var(--subtle); background: none; border: none; font-size: 11px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .reset-button:hover { color: var(--text); }
+.product-switcher { display: grid; gap: 6px; margin: 0 0 22px 16px; padding: 5px; background: var(--surface); border: 1px solid var(--border-soft); border-radius: 8px; }
+.product-switcher button { padding: 8px 9px; color: var(--muted); background: transparent; border: 0; border-radius: 5px; text-align: left; font-size: 11px; font-weight: 700; cursor: pointer; }
+.product-switcher button:hover, .product-switcher button.selected { color: var(--text); background: color-mix(in srgb, var(--purple) 16%, var(--surface)); }
+.model-panel { margin: 20px 0 30px; padding: 17px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; }
+.model-panel strong { font-size: 12px; }
+.model-panel ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 13px 0 0; padding: 0; list-style: none; counter-reset: model; }
+.model-panel li { counter-increment: model; padding: 12px; background: var(--surface-2); border-radius: 6px; }
+.model-panel li::before { content: counter(model, decimal-leading-zero); display: block; margin-bottom: 8px; color: var(--purple-bright); font: 700 10px ui-monospace, monospace; }
+.model-panel li span, .model-panel li small { display: block; }
+.model-panel li span { font-size: 12px; font-weight: 700; }
+.model-panel li small { margin-top: 3px; color: var(--subtle); font-size: 10px; }
 main { min-width: 0; }
 .lab-section { padding: 90px 0; border-bottom: 1px solid var(--border-soft); }
 .section-kicker { margin-bottom: 14px; }
@@ -216,11 +228,12 @@ footer a { color: var(--muted); }
   .lab-layout { grid-template-columns: 180px minmax(0, 1fr); gap: 40px; }
 }
 @media (max-width: 760px) {
-  .progress-pill { display: none; }.hero { min-height: auto; padding: 65px 20px; }.app-window { display: none; }
+  .progress-pill { display: none; }.product-switcher-header { display: flex; gap: 3px; padding: 3px; background: var(--surface); border: 1px solid var(--border); border-radius: 7px; }.product-switcher-header button { padding: 5px 7px; color: var(--muted); background: transparent; border: 0; border-radius: 4px; font-size: 10px; font-weight: 700; cursor: pointer; }.product-switcher-header button.selected { color: var(--text); background: color-mix(in srgb, var(--purple) 18%, var(--surface)); }.hero { min-height: auto; padding: 65px 20px; }.app-window { display: none; }
   .lab-layout { display: block; padding: 0 20px; }.lab-nav { display: none; }
   .lab-section { padding: 70px 0; }.outcome-grid, .check-grid, .recap-grid { grid-template-columns: 1fr; }
   .workspace-list, .resource-grid { grid-template-columns: 1fr; }.workspace-list > div:last-child { grid-column: auto; }
   .split-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .model-panel ol { grid-template-columns: 1fr; }
   .route { overflow-x: auto; }.route i { min-width: 16px; }
   .tour-section { grid-template-columns: 38px 1fr; gap: 12px; }.tour-section::before { left: 15px; }.tour-marker span { width: 31px; height: 31px; }
   .install-banner { align-items: flex-start; flex-wrap: wrap; }.install-banner .button { width: 100%; }
