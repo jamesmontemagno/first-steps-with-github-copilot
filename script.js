@@ -13,6 +13,7 @@ const progressLabel = document.querySelector("#progress-label");
 const progressBar = document.querySelector("#progress-bar");
 const themeToggle = document.querySelector("#theme-toggle");
 const navHeading = document.querySelector(".nav-heading");
+const brandRoute = document.querySelector("#brand-route");
 
 function progressKey(id) { return `first-steps-progress-${id}`; }
 function readProgressFor(id) {
@@ -89,7 +90,10 @@ function observeSections() {
   sections.forEach((section) => observer.observe(section));
 }
 function render() {
-  document.title = `First Steps with GitHub Copilot · ${product.name}`;
+  const picked = Boolean(labs[localStorage.getItem(PRODUCT_KEY)]);
+  document.title = picked ? `First Steps with GitHub Copilot · ${product.name}` : "First Steps with GitHub Copilot";
+  brandRoute.innerHTML = picked ? `${product.mark}<span>${product.name}</span>` : "";
+  brandRoute.hidden = !picked;
   document.querySelector("#preview-copy").textContent = product.preview;
   main.innerHTML = product.render();
   renderNav();
