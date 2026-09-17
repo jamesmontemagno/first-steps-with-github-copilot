@@ -52,26 +52,36 @@ const scenes = {
     <text class="t-xs mut" x="60" y="187">Running low? Use /compact to summarize, or start a fresh session.</text>
   `),
 
-  cliSessions: () => svg(280, "Copilot CLI with the session side panel open next to an active session", `
-    ${chrome(20, 18, 600, "copilot — 2 sessions")}
-    <rect class="panel" x="20" y="44" width="600" height="218"/>
-    <rect class="rail" x="20" y="44" width="196" height="218"/>
-    <text class="t-xs mut" x="36" y="68">SESSIONS</text>
-    <rect class="card sel" x="34" y="78" width="168" height="46" rx="8"/>
-    <text class="t-sm txt" x="48" y="98">#12 Timer</text>
-    <text class="t-xs ok" x="48" y="114">running · main</text>
-    <rect class="card" x="34" y="132" width="168" height="46" rx="8"/>
-    <text class="t-sm txt" x="48" y="152">#13 Review screen</text>
-    <text class="t-xs mut" x="48" y="168">worktree · plan mode</text>
-    <g class="mono"><text class="t-xs accent" x="34" y="208">←</text><text class="t-xs mut" x="50" y="208">opens this panel</text></g>
+  cliSessions: () => svg(300, "The Copilot CLI side panel showing the Issues tab with an open issue selected and the keyboard hints along the bottom", `
+    ${chrome(20, 18, 600, "space-quiz — copilot")}
+    <rect class="panel" x="20" y="44" width="600" height="238"/>
     <g class="mono">
-      <text class="t-sm accent" x="240" y="80">&gt;</text><text class="t-sm txt" x="256" y="80">/worktree</text>
-      <text class="t-xs mut" x="240" y="106">Created ../space-quiz-13 on branch issue-13</text>
-      <text class="t-sm accent" x="240" y="140">&gt;</text><text class="t-sm txt" x="256" y="140">/plan</text>
-      <text class="t-xs mut" x="240" y="166">Plan mode: researching before any edits…</text>
-      <text class="t-sm accent" x="240" y="200">&gt;</text><text class="t-sm txt" x="256" y="200">!git status</text>
-      <text class="t-xs ok" x="240" y="226">nothing to commit, working tree clean</text>
+      <rect class="chip" x="36" y="58" width="84" height="26" rx="6"/><text class="t-xs mut" x="78" y="75" text-anchor="middle">Current</text>
+      <rect class="chip" x="128" y="58" width="92" height="26" rx="6"/><text class="t-xs mut" x="174" y="75" text-anchor="middle">Sessions</text>
+      <rect class="chip sel" x="228" y="58" width="70" height="26" rx="6"/><text class="t-xs accent" x="263" y="75" text-anchor="middle">Issues</text>
+      <rect class="chip" x="306" y="58" width="126" height="26" rx="6"/><text class="t-xs mut" x="369" y="75" text-anchor="middle">Pull requests</text>
+      <rect class="chip" x="440" y="58" width="66" height="26" rx="6"/><text class="t-xs mut" x="473" y="75" text-anchor="middle">Gists</text>
     </g>
+    <g class="mono">
+      <text class="t-xs mut" x="36" y="116">is:</text>
+      <rect class="chip alt" x="60" y="102" width="48" height="20" rx="5"/><text class="t-xs blue" x="84" y="116" text-anchor="middle">issue</text>
+      <text class="t-xs mut" x="118" y="116">is:</text>
+      <rect class="chip alt" x="142" y="102" width="46" height="20" rx="5"/><text class="t-xs blue" x="165" y="116" text-anchor="middle">open</text>
+      <text class="t-xs mut" x="198" y="116">involves:</text>
+      <rect class="chip alt" x="266" y="102" width="44" height="20" rx="5"/><text class="t-xs blue" x="288" y="116" text-anchor="middle">@me</text>
+      <text class="t-xs mut" x="320" y="116">repo:</text>
+      <rect class="chip alt" x="360" y="102" width="102" height="20" rx="5"/><text class="t-xs blue" x="411" y="116" text-anchor="middle">space-quiz</text>
+      <text class="t-xs mut" x="474" y="116">1 / 1</text>
+    </g>
+    <rect class="card sel" x="36" y="136" width="568" height="56" rx="8"/>
+    <circle class="ok-stroke" cx="56" cy="160" r="6"/><circle class="ok-fill" cx="56" cy="160" r="2"/>
+    <text class="t-sm accent" x="74" y="164">Add a score screen at the end of the quiz</text>
+    <text class="t-xs mut mono" x="74" y="182">#2 · jamesmontemagno opened 1w ago</text>
+    <g class="mono">
+      <text class="t-xs accent" x="36" y="218">←</text><text class="t-xs mut" x="52" y="218">opens this panel · tab moves between the tabs</text>
+    </g>
+    <path class="rule" d="M36 234h568"/>
+    <text class="t-xs mut mono" x="36" y="262"><tspan class="accent">/</tspan> search · <tspan class="accent">enter</tspan> details · <tspan class="accent">o</tspan> open · <tspan class="accent">w</tspan> worktree · <tspan class="accent">c</tspan> chat · <tspan class="accent">a</tspan> all</text>
   `),
 
   appSession: () => svg(600, "The Copilot app session details panel showing path, project, agent, changes, tokens, and context usage", `
