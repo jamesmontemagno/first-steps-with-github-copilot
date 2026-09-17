@@ -277,6 +277,8 @@ svg.spark { width: 1em; height: 1em; fill: currentColor; display: block; }
 .art .card.lift { filter: drop-shadow(0 10px 18px rgba(0,0,0,.3)); }
 .art .drag { fill: none; stroke: var(--purple-bright); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .art .rule { stroke: var(--border); stroke-width: 1; }
+.art .ok-stroke { fill: none; stroke: var(--green); stroke-width: 1.4; }
+.art .alt-stroke { fill: none; stroke: var(--purple-bright); stroke-width: 1.4; }
 .art .lead { stroke: var(--purple); stroke-width: 1; stroke-dasharray: 3 3; }
 .art .link { fill: var(--blue); }
 .art .fill.ok { fill: var(--green); }

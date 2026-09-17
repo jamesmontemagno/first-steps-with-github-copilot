@@ -114,11 +114,9 @@ const scenes = {
     <g>
       <text class="t-xs accent" x="20" y="162">Which folder and</text><text class="t-xs accent" x="20" y="176">branch this really is</text>
       <path class="lead" d="M132 170h34"/>
-      <text class="t-xs accent" x="20" y="240">No model row here</text><text class="t-xs mut" x="20" y="254">Model is chosen per</text><text class="t-xs mut" x="20" y="268">request in the composer</text>
-      <path class="lead" d="M132 248h34"/>
       <text class="t-xs accent" x="490" y="392">The number to watch</text><text class="t-xs mut" x="490" y="406">As context fills, start</text><text class="t-xs mut" x="490" y="420">a fresh session</text>
       <path class="lead" d="M474 400h12"/>
-      <text class="t-xs mut" x="490" y="500">Everything you need</text><text class="t-xs mut" x="490" y="514">when a session goes</text><text class="t-xs mut" x="490" y="528">sideways lives here</text>
+      <text class="t-xs accent" x="490" y="508">More options for</text><text class="t-xs accent" x="490" y="522">the session</text>
       <path class="lead" d="M474 508h12"/>
     </g>
   `),
@@ -194,6 +192,48 @@ const scenes = {
     <rect class="card sel" x="330" y="228" width="270" height="26" rx="8"/>
     <text class="t-xs accent" x="344" y="245">Start from New → Open folder</text>
     <text class="t-xs mut" x="40" y="284">Pick the folder, the mode, and the agent before you send the first prompt.</text>
+  `),
+
+  appMyWork: () => svg(300, "The My work view in the Copilot app with the sidebar and a list of pull requests", `
+    <rect class="rail" x="0.5" y="0.5" width="212" height="299" rx="12"/>
+    <circle class="dot" cx="28" cy="28" r="5"/><circle class="dot" cx="46" cy="28" r="5"/><circle class="dot" cx="64" cy="28" r="5"/>
+    <rect class="stroke" x="84" y="20" width="18" height="16" rx="3"/><path class="stroke" d="M91 20v16"/>
+    <circle class="stroke" cx="130" cy="28" r="6"/><path class="stroke" d="m135 33 4 4"/>
+    <path class="stroke" d="M162 22l-6 6 6 6M180 22l6 6-6 6"/>
+    <path class="stroke" d="M28 66h16M36 58v16"/><text class="t-sm txt" x="56" y="71">New</text>
+    <rect class="card sel" x="14" y="86" width="184" height="30" rx="8"/>
+    <path class="stroke" d="M28 96h6v6h-6zM28 106h6v4h-6z"/><path class="stroke" d="M40 99h10M40 108h10"/>
+    <text class="t-sm txt" x="58" y="105">My work</text>
+    <rect class="stroke" x="27" y="126" width="15" height="13" rx="2.5"/><path class="stroke" d="M27 130h15M31 124v4M38 124v4"/>
+    <text class="t-sm mut" x="58" y="137">Automations</text>
+    <rect class="stroke" x="27" y="158" width="7" height="7" rx="1.5"/><rect class="stroke" x="36" y="158" width="7" height="7" rx="1.5"/><rect class="stroke" x="27" y="167" width="7" height="7" rx="1.5"/>
+    <text class="t-sm mut" x="58" y="170">Customize</text>
+    <path class="rule" d="M14 194h184"/>
+    <text class="t-xs mut" x="28" y="218">Projects</text>
+    <path class="stroke" d="M158 213h12M160 217h8M162 221h4"/>
+    <path class="stroke" d="M180 217h12M186 211v12"/>
+    <rect class="card" x="14" y="232" width="184" height="26" rx="7"/>
+    <text class="t-xs mut" x="28" y="249">space-quiz</text>
+    <text class="t-sm txt" x="236" y="34">My work</text>
+    <rect class="chip sel" x="236" y="52" width="46" height="24" rx="8"/><text class="t-xs accent" x="259" y="68" text-anchor="middle">All</text>
+    <text class="t-xs mut" x="298" y="68">Active</text>
+    <text class="t-xs mut" x="352" y="68">Review requests</text>
+    <text class="t-xs mut" x="464" y="68">Done</text>
+    <path class="stroke" d="M508 64h12M514 58v12"/>
+    <path class="rule" d="M224 88h416"/>
+    <g>
+      <circle class="ok-stroke" cx="242" cy="112" r="3"/><circle class="ok-stroke" cx="242" cy="128" r="3"/><circle class="ok-stroke" cx="256" cy="112" r="3"/><path class="ok-stroke" d="M242 115v10M256 115v8a5 5 0 0 1-5 5h-6"/>
+      <text class="t-sm txt" x="272" y="116">Move the route picker into the lab</text><text class="t-sm mut" x="512" y="116">#5</text>
+      <text class="t-xs mut" x="272" y="134">jamesmontemagno/first-steps-with-github-copilot</text>
+      <text class="t-xs mut" x="272" y="150">10m ago</text>
+    </g>
+    <g>
+      <circle class="alt-stroke" cx="242" cy="186" r="3"/><circle class="alt-stroke" cx="242" cy="202" r="3"/><circle class="alt-stroke" cx="256" cy="194" r="3"/><path class="alt-stroke" d="M242 189v10M245 193h8"/>
+      <text class="t-sm txt" x="272" y="190">Polish the multi-product lab</text><text class="t-sm mut" x="470" y="190">#4</text>
+      <text class="t-xs mut" x="272" y="208">jamesmontemagno/first-steps-with-github-copilot</text>
+      <text class="t-xs mut" x="272" y="224">3h ago</text>
+    </g>
+    <text class="t-xs accent" x="236" y="266">Every issue and pull request you care about, without leaving the app.</text>
   `),
 
   appCanvas: () => svg(300, "A Kanban canvas with issue cards, one being dragged from Backlog into Plan", `
