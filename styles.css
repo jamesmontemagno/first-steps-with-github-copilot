@@ -300,7 +300,6 @@ svg.spark { width: 1em; height: 1em; fill: currentColor; display: block; }
 .art .bad { fill: #f85149; }
 .art .inv { fill: #fff; }
 
-/* Screenshot slot · shows a placeholder until a real capture is dropped in */
 
 .command-block { margin: 14px 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); overflow-x: auto; }
 .command-block code { display: block; padding: 0; border: 0; background: none; white-space: pre; font-size: 12.5px; line-height: 1.85; color: var(--text); }
