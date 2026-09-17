@@ -74,27 +74,53 @@ const scenes = {
     </g>
   `),
 
-  appSession: () => svg(250, "The Copilot app session details panel showing folder, branch, mode, and context usage", `
-    ${chrome(20, 18, 600, "GitHub Copilot")}
-    <rect class="panel" x="20" y="44" width="600" height="188"/>
-    <rect class="rail" x="20" y="44" width="56" height="188"/>
-    <rect class="card sel" x="32" y="56" width="32" height="26" rx="7"/>
-    <rect class="card" x="32" y="90" width="32" height="26" rx="7"/>
-    <rect class="card" x="32" y="124" width="32" height="26" rx="7"/>
-    <rect class="head" x="76" y="44" width="544" height="44"/>
-    <rect class="chip" x="94" y="56" width="110" height="22" rx="11"/><text class="t-xs txt" x="108" y="71">space-quiz</text>
-    <rect class="chip" x="214" y="56" width="74" height="22" rx="11"/><text class="t-xs ok" x="228" y="71">main</text>
-    <rect class="chip" x="298" y="56" width="96" height="22" rx="11"/><text class="t-xs accent" x="312" y="71">Interactive</text>
-    <rect class="chip" x="404" y="56" width="128" height="22" rx="11"/><text class="t-xs mut" x="418" y="71">Context 24%</text>
-    ${bar(496, 65, 26, 5, "track")}${bar(496, 65, 7, 5, "fill")}
-    <text class="t-xs mut" x="608" y="71" text-anchor="end">⌄</text>
-    <rect class="bubble" x="300" y="106" width="304" height="34" rx="10"/>
-    <text class="t-sm txt" x="316" y="127">Create a space exploration quiz…</text>
-    <circle class="sw" cx="104" cy="164" r="9"/>
-    <rect class="card" x="122" y="148" width="330" height="60" rx="10"/>
-    <text class="t-sm txt" x="138" y="170">Building index.html</text>
-    ${bar(138, 182, 200, 6, "fill")}
-    <text class="t-xs mut" x="138" y="202">+142 lines · 1 file</text>
+  appSession: () => svg(600, "The Copilot app session details panel showing path, project, agent, changes, tokens, and context usage", `
+    <text class="t-sm txt" x="170" y="30">Space Quiz build</text><text class="t-sm mut mono" x="286" y="30">· space-quiz/main</text>
+    <rect class="panel" x="170" y="42" width="300" height="536" rx="10"/>
+    <rect class="chip" x="186" y="56" width="52" height="22" rx="6"/><text class="t-xs accent mono" x="196" y="71">main</text>
+    <text class="t-xs mut" x="246" y="71">from</text>
+    <rect class="chip" x="280" y="56" width="104" height="22" rx="6"/><text class="t-xs accent mono" x="292" y="71">origin/main</text>
+    <path class="rule" d="M170 90h300"/>
+    <g>
+      <text class="t-xs mut" x="186" y="114">Remote control</text><text class="t-xs txt" x="318" y="114">Not enabled</text>
+      <text class="t-xs mut" x="186" y="140">Path</text><text class="t-xs txt mono" x="318" y="140">~/Projects/spa…</text>
+      <text class="t-xs mut" x="186" y="166">Project</text><text class="t-xs txt" x="318" y="166">space-quiz</text>
+      <text class="t-xs mut" x="186" y="192">Session name</text><text class="t-xs txt" x="318" y="192">Space Quiz build</text>
+      <text class="t-xs mut" x="186" y="218">Session ID</text><text class="t-xs txt mono" x="318" y="218">509d8b9a-cc2e…</text>
+      <text class="t-xs mut" x="186" y="244">Agent</text><text class="t-xs txt" x="318" y="244">Default</text><text class="t-xs link" x="376" y="244">Change</text>
+    </g>
+    <path class="rule" d="M170 260h300"/>
+    <text class="t-xs mut" x="186" y="284">Changes</text><text class="t-xs ok" x="318" y="284">1 file changed</text>
+    <path class="rule" d="M170 300h300"/>
+    <text class="t-xs mut" x="186" y="324">Tokens</text>
+    <text class="t-xs txt" x="318" y="324">↑ 6.8M</text><text class="t-xs mut" x="374" y="324">(6.8M cached)</text>
+    <text class="t-xs txt" x="318" y="344">↓ 35.1K</text><text class="t-xs mut" x="374" y="344">(6.9K reasoning)</text>
+    <text class="t-xs mut" x="186" y="374">Context</text>
+    <text class="t-sm txt" x="186" y="396">27%</text><text class="t-xs mut" x="454" y="396" text-anchor="end">328K</text>
+    ${bar(186, 404, 268, 7, "track")}
+    ${bar(186, 404, 8, 7, "fill alt")}
+    ${bar(196, 404, 4, 7, "fill")}
+    ${bar(202, 404, 62, 7, "fill ok")}
+    <text class="t-xs mut" x="186" y="434">Session spend</text><text class="t-xs txt" x="318" y="434">20.7 AI credits</text>
+    <path class="rule" d="M170 450h300"/>
+    <g>
+      <circle class="stroke" cx="194" cy="470" r="3"/><path class="stroke" d="M188 466a9 9 0 0 0 0 8M200 466a9 9 0 0 1 0 8"/>
+      <text class="t-xs mut" x="212" y="474">Enable remote control</text>
+      <path class="stroke" d="M189 494l9-9 4 4-9 9h-4Z"/><text class="t-xs mut" x="212" y="498">Rename session</text>
+      <path class="stroke" d="M188 510l4 6 4-12 4 10 3-4"/><text class="t-xs mut" x="212" y="522">View session insights</text>
+      <path class="stroke" d="M194 542v-12M190 534l4-4 4 4M188 546h12"/><text class="t-xs mut" x="212" y="546">Share as secret gist</text>
+      <rect class="stroke" x="188" y="562" width="12" height="9" rx="1.5"/><path class="stroke" d="M187 560h14"/><text class="t-xs mut" x="212" y="570">Archive session</text>
+    </g>
+    <g>
+      <text class="t-xs accent" x="20" y="162">Which folder and</text><text class="t-xs accent" x="20" y="176">branch this really is</text>
+      <path class="lead" d="M132 170h34"/>
+      <text class="t-xs accent" x="20" y="240">No model row here</text><text class="t-xs mut" x="20" y="254">Model is chosen per</text><text class="t-xs mut" x="20" y="268">request in the composer</text>
+      <path class="lead" d="M132 248h34"/>
+      <text class="t-xs accent" x="490" y="392">The number to watch</text><text class="t-xs mut" x="490" y="406">As context fills, start</text><text class="t-xs mut" x="490" y="420">a fresh session</text>
+      <path class="lead" d="M474 400h12"/>
+      <text class="t-xs mut" x="490" y="500">Everything you need</text><text class="t-xs mut" x="490" y="514">when a session goes</text><text class="t-xs mut" x="490" y="528">sideways lives here</text>
+      <path class="lead" d="M474 508h12"/>
+    </g>
   `),
 
   appChanges: () => svg(250, "The Changes tab in the app flyout showing a file diff", `
