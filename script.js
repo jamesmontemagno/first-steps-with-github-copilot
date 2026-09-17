@@ -11,7 +11,7 @@ const main = document.querySelector("#main-content");
 const progressLabel = document.querySelector("#progress-label");
 const progressBar = document.querySelector("#progress-bar");
 const themeToggle = document.querySelector("#theme-toggle");
-const productSwitcher = document.querySelector("#product-switcher");
+const navHeading = document.querySelector(".nav-heading");
 
 function readProgress() {
   try { return JSON.parse(localStorage.getItem(`first-steps-progress-${product.id}`)) || []; } catch { return []; }
@@ -24,15 +24,20 @@ function updateProgress() {
   progressBar.style.width = `${checks.length ? completed.length / checks.length * 100 : 0}%`;
 }
 function renderNav() {
-  productSwitcher.innerHTML = Object.values(labs).map((lab) => `<button type="button" aria-pressed="${lab.id === product.id}" data-product="${lab.id}">${lab.name}</button>`).join("");
+  const productSwitcher = document.querySelector("#product-switcher");
+  if (productSwitcher) {
+    productSwitcher.innerHTML = Object.values(labs).map((lab) => `<button class="route-card" type="button" aria-pressed="${lab.id === product.id}" data-product="${lab.id}"><span class="route-icon">${lab.mark}</span><b>${lab.name}</b><span>${lab.tagline}</span></button>`).join("");
+    productSwitcher.querySelectorAll("[data-product]").forEach((button) => button.addEventListener("click", () => {
+      localStorage.setItem(PRODUCT_KEY, button.dataset.product);
+      product = labs[button.dataset.product];
+      render();
+      document.querySelector("#overview")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }));
+  }
+  navHeading.textContent = `Your route · ${product.name}`;
   nav.innerHTML = `<a href="#overview" class="nav-link active"><span>01</span>Overview</a>` +
     product.sections.map(([id, label], index) => `<a href="#${id}" class="nav-link"><span>${String(index + 2).padStart(2, "0")}</span>${label}</a>`).join("") +
     `<a href="#resources" class="nav-link"><span>${String(product.sections.length + 2).padStart(2, "0")}</span>Review & resources</a>`;
-  productSwitcher.querySelectorAll("[data-product]").forEach((button) => button.addEventListener("click", () => {
-    localStorage.setItem(PRODUCT_KEY, button.dataset.product);
-    product = labs[button.dataset.product];
-    render();
-  }));
 }
 function observeSections() {
   if (!("IntersectionObserver" in window)) return;
@@ -62,6 +67,11 @@ function render() {
   document.querySelector("#reset-progress").onclick = () => {
     if (confirm(`Reset ${product.name} progress?`)) { localStorage.removeItem(`first-steps-progress-${product.id}`); render(); }
   };
+  document.querySelectorAll(".shot-figure img").forEach((image) => {
+    const done = () => image.closest(".shot-figure").classList.remove("is-empty");
+    if (image.complete && image.naturalWidth) done();
+    image.addEventListener("load", done);
+  });
   observeSections();
   updateProgress();
 }

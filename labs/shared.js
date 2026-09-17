@@ -16,7 +16,10 @@ const icons = {
   work: '<rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6V4h8v2"/>',
   bolt: '<path d="M13 3 5 13h6l-1 8 8-10h-6Z"/>',
   terminal: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/>',
-  plan: '<path d="M5 4h14v16H5Z"/><path d="M9 9h6M9 13h6M9 17h3"/>'
+  plan: '<path d="M5 4h14v16H5Z"/><path d="M9 9h6M9 13h6M9 17h3"/>',
+  cloud: '<path d="M7 18a4 4 0 0 1 .6-8 5.5 5.5 0 0 1 10.6 1.6A3.7 3.7 0 0 1 17.5 18Z"/>',
+  book: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5Z"/><path d="M20 18v3H6.5"/>',
+  code: '<path d="m9 8-4 4 4 4M15 8l4 4-4 4"/>'
 };
 
 export function icon(name) {
@@ -31,19 +34,28 @@ export function check(task, title, detail = "") {
   return `<label class="section-complete"><input class="progress-check" type="checkbox" data-task="${task}"><span class="custom-check"></span><span><strong>${title}</strong>${detail ? `<small>${detail}</small>` : ""}</span></label>`;
 }
 
-export function figure(src, alt, caption) {
-  return `<figure class="doc-figure"><img src="${src}" alt="${alt}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption></figure>`;
+// A screenshot slot. Drop a PNG at assets/shots/<name>.png and it replaces the placeholder.
+export function shot(name, alt, caption) {
+  const src = `assets/shots/${name}.png`;
+  return `<figure class="shot-figure is-empty" data-shot="${name}"><img src="${src}" alt="${alt}" loading="lazy" decoding="async"><div class="shot-slot"><strong>Screenshot slot</strong><code>${src}</code><small>${alt}</small></div><figcaption>${caption}</figcaption></figure>`;
+}
+
+export function links(title, items) {
+  return `<div class="resource-block"><h3>${title}</h3><div class="resource-grid">${items.map(([label, href, detail]) => `<a class="resource-card" href="${href}" target="_blank" rel="noopener"><strong>${label}</strong><small>${detail}</small></a>`).join("")}</div></div>`;
 }
 
 const policyNote = `<p class="note"><strong>Organization account?</strong> Copilot Business and Enterprise administrators must enable the <strong>Copilot CLI</strong> policy before agent sessions will work.</p>`;
 
 export function sharedOverview(lab) {
   const git = lab.needsGit
-    ? `<label class="check-card"><input class="progress-check" type="checkbox" data-task="git"><span class="custom-check"></span><span><strong>Git installed</strong><small>Required for this route · <code>git --version</code></small></span></label>`
+    ? `<label class="check-card"><input class="progress-check" type="checkbox" data-task="git"><span class="custom-check"></span><span><strong>Git installed</strong><small>Required for this route · check with <code>git --version</code>, or <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">install Git</a></small></span></label>`
     : `<label class="check-card"><input class="progress-check" type="checkbox" data-task="git"><span class="custom-check"></span><span><strong>Git is bundled</strong><small>The app ships with Git, so there is nothing to install.</small></span></label>`;
   return `<section class="lab-section intro-section" id="overview">
     <div class="section-kicker">01 · Choose your route</div>
     <h2>One project. Your Copilot flow.</h2>
+    <p class="section-intro">Pick where you work. Every step below rewrites itself for that product, and your progress is tracked separately for each one.</p>
+    <div id="product-switcher" class="route-picker" role="group" aria-label="Choose a Copilot product"></div>
+    <p class="route-note">You can switch at any time. Nothing you have checked off is lost.</p>
     <p class="section-intro">${lab.intro}</p>
     <div class="outcome-grid">
       <article><span class="feature-icon">${icon("context")}</span><h3>Build in context</h3><p>Keep your prompt, files, and feedback close together as you shape the space quiz.</p></article>
