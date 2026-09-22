@@ -1,6 +1,7 @@
 export const models = [
   ["GPT-6-Luna", "Recommended"],
-  ["Auto", "Balanced backup"]
+  ["Auto", "Balanced backup"],
+  ["Your choice", "See active models", "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing"]
 ];
 
 export const signup = "https://github.com/features/copilot/plans";
@@ -76,5 +77,5 @@ export function numberSections(sections) {
 }
 
 export function modelPanel() {
-  return `<div class="model-panel"><strong>Recommended model order</strong><ol>${models.map(([name, reasoning]) => `<li><span>${name}</span><small>${reasoning}</small></li>`).join("")}</ol><small class="model-note">Availability depends on your plan, organization policy, and product version. Use the first option you can select.</small></div>`;
+  return `<div class="model-panel"><strong>Recommended model order</strong><ol>${models.map(([name, reasoning, href]) => `<li><span>${name}</span><small>${href ? `<a href="${href}" target="_blank" rel="noopener">${reasoning}</a>` : reasoning}</small></li>`).join("")}</ol><small class="model-note">Availability depends on your plan, organization policy, and product version. Use the first option you can select.</small></div>`;
 }
