@@ -1,6 +1,7 @@
 export const models = [
   ["GPT-6-Luna", "Recommended"],
-  ["Auto", "Balanced backup"]
+  ["Auto", "Balanced backup"],
+  ["Your choice", "Pick any model you prefer"]
 ];
 
 export const signup = "https://github.com/features/copilot/plans";
