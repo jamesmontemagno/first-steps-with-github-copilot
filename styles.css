@@ -346,6 +346,7 @@ summary { display: flex; justify-content: space-between; padding: 12px 0; color:
 footer { display: flex; align-items: center; justify-content: space-between; gap: 30px; max-width: 1180px; margin: 0 auto; padding: 35px 24px; border-top: 1px solid var(--border-soft); color: var(--subtle); font-size: 10px; }
 .footer-brand { display: flex; align-items: center; gap: 10px; color: var(--text); }.footer-brand > span { color: var(--purple-bright); font-size: 20px; }.footer-brand strong, .footer-brand small { display: block; }.footer-brand small { color: var(--subtle); }
 footer a { color: var(--muted); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px 16px; }
 
 @keyframes pulse { 0%, 60%, 100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
 @media (max-width: 1000px) {
