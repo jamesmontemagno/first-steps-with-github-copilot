@@ -14,6 +14,40 @@ function bar(x, y, w, h = 8, cls = "fill") {
   return `<rect class="${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="${h / 2}"/>`;
 }
 
+// Sidebar glyphs are drawn relative to each row's text baseline (b).
+const navItems = [
+  ["New", (b) => `<path class="stroke" d="M29 ${b - 5}h14M36 ${b - 12}v14"/>`],
+  ["Pull requests", (b) => `<circle class="stroke" cx="31" cy="${b - 11}" r="2.2"/><circle class="stroke" cx="31" cy="${b + 1}" r="2.2"/><circle class="stroke" cx="41" cy="${b + 1}" r="2.2"/><path class="stroke" d="M31 ${b - 8.8}v7.6M41 ${b - 1.2}V${b - 8}a3 3 0 0 0-3-3h-3.5m2.5-2.5-2.5 2.5 2.5 2.5"/>`],
+  ["Issues", (b) => `<circle class="stroke" cx="36" cy="${b - 5}" r="7"/><circle class="stroke" cx="36" cy="${b - 5}" r="1.5"/>`],
+  ["Automations", (b) => `<rect class="stroke" x="27" y="${b - 11}" width="15" height="13" rx="2.5"/><path class="stroke" d="M27 ${b - 7}h15M31 ${b - 13}v4M38 ${b - 13}v4"/>`],
+  ["Customize", (b) => `<rect class="stroke" x="27" y="${b - 12}" width="7" height="7" rx="1.5"/><rect class="stroke" x="36" y="${b - 12}" width="7" height="7" rx="1.5"/><rect class="stroke" x="27" y="${b - 3}" width="7" height="7" rx="1.5"/>`],
+  ["More", (b) => `<circle class="stroke" cx="29" cy="${b - 5}" r="1.2"/><circle class="stroke" cx="36" cy="${b - 5}" r="1.2"/><circle class="stroke" cx="43" cy="${b - 5}" r="1.2"/>`]
+];
+
+function appSidebar(active) {
+  const rows = navItems.map(([label, glyph], i) => {
+    const b = 62 + i * 28;
+    const on = label === active;
+    return `${on ? `<rect class="card sel" x="14" y="${b - 18}" width="184" height="26" rx="8"/>` : ""}${glyph(b)}<text class="t-sm ${on || label === "New" ? "txt" : "mut"}" x="58" y="${b}">${label}</text>`;
+  }).join("");
+  return `
+    <rect class="rail" x="0.5" y="0.5" width="212" height="299" rx="12"/>
+    <circle class="dot" cx="28" cy="28" r="5"/><circle class="dot" cx="46" cy="28" r="5"/><circle class="dot" cx="64" cy="28" r="5"/>
+    <rect class="stroke" x="84" y="20" width="18" height="16" rx="3"/><path class="stroke" d="M91 20v16"/>
+    <circle class="stroke" cx="130" cy="28" r="6"/><path class="stroke" d="m135 33 4 4"/>
+    <path class="stroke" d="M162 22l-6 6 6 6M180 22l6 6-6 6"/>
+    ${rows}
+    <path class="rule" d="M14 216h184"/>
+    <text class="t-xs mut" x="28" y="236">Projects</text>
+    <path class="stroke" d="M158 231h12M160 235h8M162 239h4M180 235h12M186 229v12"/>
+    <rect class="card" x="14" y="248" width="184" height="26" rx="7"/>
+    <text class="t-xs mut" x="28" y="265">space-quiz</text>`;
+}
+
+function issueRow(b, title, number, meta) {
+  return `<rect class="stroke" x="236" y="${b - 10}" width="10" height="10" rx="2"/><circle class="ok-stroke" cx="262" cy="${b - 4}" r="6"/><circle class="ok-fill" cx="262" cy="${b - 4}" r="2"/><text class="t-sm txt" x="276" y="${b}">${title} <tspan class="mut">#${number}</tspan></text><text class="t-xs mut" x="276" y="${b + 18}">${meta}</text>`;
+}
+
 const scenes = {
   cliWelcome: () => svg(330, "Copilot CLI welcome screen in a terminal window", `
     ${chrome(20, 18, 600, "space-quiz — copilot")}
@@ -204,67 +238,32 @@ const scenes = {
     <text class="t-xs mut" x="40" y="284">Pick the folder, the mode, and the agent before you send the first prompt.</text>
   `),
 
-  appMyWork: () => svg(300, "The My work view in the Copilot app with the sidebar and a list of pull requests", `
-    <rect class="rail" x="0.5" y="0.5" width="212" height="299" rx="12"/>
-    <circle class="dot" cx="28" cy="28" r="5"/><circle class="dot" cx="46" cy="28" r="5"/><circle class="dot" cx="64" cy="28" r="5"/>
-    <rect class="stroke" x="84" y="20" width="18" height="16" rx="3"/><path class="stroke" d="M91 20v16"/>
-    <circle class="stroke" cx="130" cy="28" r="6"/><path class="stroke" d="m135 33 4 4"/>
-    <path class="stroke" d="M162 22l-6 6 6 6M180 22l6 6-6 6"/>
-    <path class="stroke" d="M28 66h16M36 58v16"/><text class="t-sm txt" x="56" y="71">New</text>
-    <rect class="card sel" x="14" y="86" width="184" height="30" rx="8"/>
-    <path class="stroke" d="M28 96h6v6h-6zM28 106h6v4h-6z"/><path class="stroke" d="M40 99h10M40 108h10"/>
-    <text class="t-sm txt" x="58" y="105">My work</text>
-    <rect class="stroke" x="27" y="126" width="15" height="13" rx="2.5"/><path class="stroke" d="M27 130h15M31 124v4M38 124v4"/>
-    <text class="t-sm mut" x="58" y="137">Automations</text>
-    <rect class="stroke" x="27" y="158" width="7" height="7" rx="1.5"/><rect class="stroke" x="36" y="158" width="7" height="7" rx="1.5"/><rect class="stroke" x="27" y="167" width="7" height="7" rx="1.5"/>
-    <text class="t-sm mut" x="58" y="170">Customize</text>
-    <path class="rule" d="M14 194h184"/>
-    <text class="t-xs mut" x="28" y="218">Projects</text>
-    <path class="stroke" d="M158 213h12M160 217h8M162 221h4"/>
-    <path class="stroke" d="M180 217h12M186 211v12"/>
-    <rect class="card" x="14" y="232" width="184" height="26" rx="7"/>
-    <text class="t-xs mut" x="28" y="249">space-quiz</text>
-    <text class="t-sm txt" x="236" y="34">My work</text>
-    <rect class="chip sel" x="236" y="52" width="46" height="24" rx="8"/><text class="t-xs accent" x="259" y="68" text-anchor="middle">All</text>
-    <text class="t-xs mut" x="298" y="68">Active</text>
-    <text class="t-xs mut" x="352" y="68">Review requests</text>
-    <text class="t-xs mut" x="464" y="68">Done</text>
-    <path class="stroke" d="M508 64h12M514 58v12"/>
-    <path class="rule" d="M224 88h416"/>
-    <g>
-      <circle class="ok-stroke" cx="242" cy="112" r="3"/><circle class="ok-stroke" cx="242" cy="128" r="3"/><circle class="ok-stroke" cx="256" cy="112" r="3"/><path class="ok-stroke" d="M242 115v10M256 115v8a5 5 0 0 1-5 5h-6"/>
-      <text class="t-sm txt" x="272" y="116">Move the route picker into the lab</text><text class="t-sm mut" x="512" y="116">#5</text>
-      <text class="t-xs mut" x="272" y="134">jamesmontemagno/first-steps-with-github-copilot</text>
-      <text class="t-xs mut" x="272" y="150">10m ago</text>
-    </g>
-    <g>
-      <circle class="alt-stroke" cx="242" cy="186" r="3"/><circle class="alt-stroke" cx="242" cy="202" r="3"/><circle class="alt-stroke" cx="256" cy="194" r="3"/><path class="alt-stroke" d="M242 189v10M245 193h8"/>
-      <text class="t-sm txt" x="272" y="190">Polish the multi-product lab</text><text class="t-sm mut" x="470" y="190">#4</text>
-      <text class="t-xs mut" x="272" y="208">jamesmontemagno/first-steps-with-github-copilot</text>
-      <text class="t-xs mut" x="272" y="224">3h ago</text>
-    </g>
-    <text class="t-xs accent" x="236" y="266">Every issue and pull request you care about, without leaving the app.</text>
+  appIssues: () => svg(300, "The Issues view in the Copilot app with the sidebar and a list of issues assigned to you", `
+    ${appSidebar("Issues")}
+    <text class="t-sm txt" x="236" y="34">Issues</text>
+    <rect class="chip" x="432" y="18" width="112" height="24" rx="7"/><text class="t-xs txt" x="488" y="34" text-anchor="middle">All repositories ⌄</text>
+    <rect class="chip" x="552" y="18" width="84" height="24" rx="7"/><text class="t-xs txt" x="594" y="34" text-anchor="middle">New issue</text>
+    <rect class="chip sel" x="236" y="52" width="86" height="24" rx="8"/><text class="t-xs accent" x="279" y="68" text-anchor="middle">Assigned to me</text>
+    <text class="t-xs mut" x="336" y="68">Created by me</text>
+    <text class="t-xs mut" x="420" y="68">Mentioning me</text>
+    <text class="t-xs mut" x="508" y="68">Done</text>
+    <path class="stroke" d="M548 64h12M554 58v12"/>
+    <rect class="input" x="236" y="86" width="120" height="22" rx="7"/>
+    <circle class="stroke" cx="250" cy="96" r="4"/><path class="stroke" d="m253 99 3 3"/>
+    <text class="t-xs mut" x="262" y="101">Search…</text>
+    <rect class="chip" x="364" y="86" width="96" height="22" rx="7"/>
+    <text class="t-xs mut" x="374" y="101">State is</text><circle class="ok-stroke" cx="420" cy="97" r="4"/><text class="t-xs txt" x="428" y="101">Open</text>
+    <rect class="chip" x="468" y="86" width="98" height="22" rx="7"/>
+    <text class="t-xs mut" x="478" y="101">Assignee is</text><text class="t-xs txt" x="534" y="101">@me</text>
+    <path class="rule" d="M224 120h416"/>
+    ${issueRow(142, "Add a per-question timer", 12, "jamesmontemagno/space-quiz · 5m ago")}
+    ${issueRow(186, "Show a review screen after the last question", 13, "jamesmontemagno/space-quiz · 5m ago")}
+    ${issueRow(230, "Save a local high score board", 14, "jamesmontemagno/space-quiz · 5m ago")}
+    <text class="t-xs accent" x="236" y="280">Open any issue and start a session on it without leaving the app.</text>
   `),
 
   appAutomations: () => svg(300, "The Automations view in the Copilot app with weekly automation cards", `
-    <rect class="rail" x="0.5" y="0.5" width="212" height="299" rx="12"/>
-    <circle class="dot" cx="28" cy="28" r="5"/><circle class="dot" cx="46" cy="28" r="5"/><circle class="dot" cx="64" cy="28" r="5"/>
-    <rect class="stroke" x="84" y="20" width="18" height="16" rx="3"/><path class="stroke" d="M91 20v16"/>
-    <circle class="stroke" cx="130" cy="28" r="6"/><path class="stroke" d="m135 33 4 4"/>
-    <path class="stroke" d="M162 22l-6 6 6 6M180 22l6 6-6 6"/>
-    <path class="stroke" d="M28 66h16M36 58v16"/><text class="t-sm txt" x="56" y="71">New</text>
-    <path class="stroke" d="M28 96h6v6h-6zM28 106h6v4h-6zM40 99h10M40 108h10"/>
-    <text class="t-sm mut" x="58" y="105">My work</text>
-    <rect class="card sel" x="14" y="118" width="184" height="30" rx="8"/>
-    <rect class="stroke" x="27" y="126" width="15" height="13" rx="2.5"/><path class="stroke" d="M27 130h15M31 124v4M38 124v4"/>
-    <text class="t-sm txt" x="58" y="137">Automations</text>
-    <rect class="stroke" x="27" y="158" width="7" height="7" rx="1.5"/><rect class="stroke" x="36" y="158" width="7" height="7" rx="1.5"/><rect class="stroke" x="27" y="167" width="7" height="7" rx="1.5"/>
-    <text class="t-sm mut" x="58" y="170">Customize</text>
-    <path class="rule" d="M14 194h184"/>
-    <text class="t-xs mut" x="28" y="218">Projects</text>
-    <path class="stroke" d="M158 213h12M160 217h8M162 221h4M180 217h12M186 211v12"/>
-    <rect class="card" x="14" y="232" width="184" height="26" rx="7"/>
-    <text class="t-xs mut" x="28" y="249">space-quiz</text>
+    ${appSidebar("Automations")}
     <text class="t-sm txt" x="236" y="34">Automations</text>
     <rect class="chip" x="430" y="18" width="88" height="24" rx="7"/><text class="t-xs txt" x="474" y="34" text-anchor="middle">Templates</text>
     <rect class="cta" x="526" y="18" width="110" height="24" rx="7"/><text class="t-xs inv" x="581" y="34" text-anchor="middle">New automation</text>
