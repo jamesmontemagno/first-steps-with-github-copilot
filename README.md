@@ -16,6 +16,8 @@ Choose a product from the switcher in the header. Each product has its own maint
 
 The shared model preference order is **GPT-6-Luna** (recommended), **Auto** (balanced backup), then [your choice from the active models list](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing).
 
+When capturing project instructions, run `/init create simple rules for the project`. Include the request text after `/init` to avoid the app's "Command input required" error.
+
 ## Prerequisites
 
 Before installing:
@@ -23,6 +25,8 @@ Before installing:
 1. [Create a GitHub account](https://github.com/signup), or use your existing account.
 2. [Activate Copilot Free or a paid Copilot plan](https://github.com/features/copilot/plans). If your organization already provides Copilot access, use that account instead of signing up for another plan.
 3. Install the GitHub Copilot app, Copilot CLI, or VS Code + GitHub Copilot, depending on the route. Git is required for the CLI and VS Code routes; the desktop app bundles Git.
+
+**PR code review:** Copilot Free does not include [Copilot code review](https://docs.github.com/en/copilot/concepts/agents/code-review). Requesting Copilot as a PR reviewer requires a plan that includes code review, or organization-enabled access on GitHub.com. Organization access also depends on administrator policies. Without access, skip the Copilot reviewer request, inspect the diff yourself or ask a human reviewer, and retest. Manual review still counts toward completing the lab; creating PRs and using Copilot Chat for follow-up work are separate from the code review feature.
 
 ## Run locally
 

@@ -6,6 +6,8 @@ export const models = [
 
 export const signup = "https://github.com/features/copilot/plans";
 
+export const codeReviewNote = `<p class="note"><strong>Copilot Free does not include Copilot code review.</strong> Use a plan that includes code review, or organization-enabled access on GitHub.com. Organization access also depends on administrator policies. <a href="https://docs.github.com/en/copilot/concepts/agents/code-review" target="_blank" rel="noopener">Check code review availability</a>. Without access, skip requesting Copilot as a PR reviewer, inspect the diff yourself or ask a human reviewer, and retest. Manual review still counts toward completing the lab.</p>`;
+
 const icons = {
   context: '<path d="M4 7h16M4 12h10M4 17h13"/>',
   preview: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/>',
@@ -72,6 +74,7 @@ export function sharedOverview(lab) {
       <label class="check-card"><input class="progress-check" type="checkbox" data-task="copilot-plan"><span class="custom-check"></span><span><strong>Copilot plan activated</strong><small><a href="${signup}" target="_blank" rel="noopener">Activate Copilot Free or a paid plan</a>, or use access provided by your organization.</small></span></label>
       ${git}
     </div>
+    ${codeReviewNote}
     ${lab.policy ? policyNote : ""}
   </section>`;
 }

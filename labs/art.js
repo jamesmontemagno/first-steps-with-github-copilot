@@ -118,50 +118,44 @@ const scenes = {
     <text class="t-xs mut mono" x="36" y="262"><tspan class="accent">/</tspan> search · <tspan class="accent">enter</tspan> details · <tspan class="accent">o</tspan> open · <tspan class="accent">w</tspan> worktree · <tspan class="accent">c</tspan> chat · <tspan class="accent">a</tspan> all</text>
   `),
 
-  appSession: () => svg(600, "The Copilot app session details panel showing path, project, agent, changes, tokens, and context usage", `
-    <text class="t-sm txt" x="170" y="30">Space Quiz build</text><text class="t-sm mut mono" x="286" y="30">· space-quiz/main</text>
-    <rect class="panel" x="170" y="42" width="300" height="536" rx="10"/>
-    <rect class="chip" x="186" y="56" width="52" height="22" rx="6"/><text class="t-xs accent mono" x="196" y="71">main</text>
-    <text class="t-xs mut" x="246" y="71">from</text>
-    <rect class="chip" x="280" y="56" width="104" height="22" rx="6"/><text class="t-xs accent mono" x="292" y="71">origin/main</text>
-    <path class="rule" d="M170 90h300"/>
+  appSession: () => svg(516, "The Copilot app local-folder session details panel showing path, project, agent, tokens, and context usage before Git is initialized", `
+    <text class="t-sm txt" x="170" y="30">Space Quiz build</text><text class="t-sm mut mono" x="286" y="30">· space-quiz</text>
+    <rect class="panel" x="170" y="42" width="300" height="452" rx="10"/>
     <g>
-      <text class="t-xs mut" x="186" y="114">Remote control</text><text class="t-xs txt" x="318" y="114">Not enabled</text>
-      <text class="t-xs mut" x="186" y="140">Path</text><text class="t-xs txt mono" x="318" y="140">~/Projects/spa…</text>
-      <text class="t-xs mut" x="186" y="166">Project</text><text class="t-xs txt" x="318" y="166">space-quiz</text>
-      <text class="t-xs mut" x="186" y="192">Session name</text><text class="t-xs txt" x="318" y="192">Space Quiz build</text>
-      <text class="t-xs mut" x="186" y="218">Session ID</text><text class="t-xs txt mono" x="318" y="218">509d8b9a-cc2e…</text>
-      <text class="t-xs mut" x="186" y="244">Agent</text><text class="t-xs txt" x="318" y="244">Default</text><text class="t-xs link" x="376" y="244">Change</text>
+      <text class="t-xs mut" x="186" y="70">Remote control</text><text class="t-xs txt" x="318" y="70">Not enabled</text>
+      <text class="t-xs mut" x="186" y="96">Path</text><text class="t-xs txt mono" x="318" y="96">~/Projects/spa…</text>
+      <text class="t-xs mut" x="186" y="122">Project</text><text class="t-xs txt" x="318" y="122">space-quiz</text>
+      <text class="t-xs mut" x="186" y="148">Session name</text><text class="t-xs txt" x="318" y="148">Space Quiz build</text>
+      <text class="t-xs mut" x="186" y="174">Session ID</text><text class="t-xs txt mono" x="318" y="174">509d8b9a-cc2e…</text>
+      <text class="t-xs mut" x="186" y="200">Agent</text><text class="t-xs txt" x="318" y="200">Default</text><text class="t-xs link" x="376" y="200">Change</text>
     </g>
-    <path class="rule" d="M170 260h300"/>
-    <text class="t-xs mut" x="186" y="284">Changes</text><text class="t-xs ok" x="318" y="284">1 file changed</text>
-    <path class="rule" d="M170 300h300"/>
-    <text class="t-xs mut" x="186" y="324">Tokens</text>
-    <text class="t-xs txt" x="318" y="324">↑ 6.8M</text><text class="t-xs mut" x="374" y="324">(6.8M cached)</text>
-    <text class="t-xs txt" x="318" y="344">↓ 35.1K</text><text class="t-xs mut" x="374" y="344">(6.9K reasoning)</text>
-    <text class="t-xs mut" x="186" y="374">Context</text>
-    <text class="t-sm txt" x="186" y="396">27%</text><text class="t-xs mut" x="454" y="396" text-anchor="end">328K</text>
-    ${bar(186, 404, 268, 7, "track")}
-    ${bar(186, 404, 8, 7, "fill alt")}
-    ${bar(196, 404, 4, 7, "fill")}
-    ${bar(202, 404, 62, 7, "fill ok")}
-    <text class="t-xs mut" x="186" y="434">Session spend</text><text class="t-xs txt" x="318" y="434">20.7 AI credits</text>
-    <path class="rule" d="M170 450h300"/>
+    <path class="rule" d="M170 216h300"/>
+    <text class="t-xs mut" x="186" y="240">Tokens</text>
+    <text class="t-xs txt" x="318" y="240">↑ 6.8M</text><text class="t-xs mut" x="374" y="240">(6.8M cached)</text>
+    <text class="t-xs txt" x="318" y="260">↓ 35.1K</text><text class="t-xs mut" x="374" y="260">(6.9K reasoning)</text>
+    <text class="t-xs mut" x="186" y="290">Context</text>
+    <text class="t-sm txt" x="186" y="312">27%</text><text class="t-xs mut" x="454" y="312" text-anchor="end">328K</text>
+    ${bar(186, 320, 268, 7, "track")}
+    ${bar(186, 320, 8, 7, "fill alt")}
+    ${bar(196, 320, 4, 7, "fill")}
+    ${bar(202, 320, 62, 7, "fill ok")}
+    <text class="t-xs mut" x="186" y="350">Session spend</text><text class="t-xs txt" x="318" y="350">20.7 AI credits</text>
+    <path class="rule" d="M170 366h300"/>
     <g>
-      <circle class="stroke" cx="194" cy="470" r="3"/><path class="stroke" d="M188 466a9 9 0 0 0 0 8M200 466a9 9 0 0 1 0 8"/>
-      <text class="t-xs mut" x="212" y="474">Enable remote control</text>
-      <path class="stroke" d="M189 494l9-9 4 4-9 9h-4Z"/><text class="t-xs mut" x="212" y="498">Rename session</text>
-      <path class="stroke" d="M188 510l4 6 4-12 4 10 3-4"/><text class="t-xs mut" x="212" y="522">View session insights</text>
-      <path class="stroke" d="M194 542v-12M190 534l4-4 4 4M188 546h12"/><text class="t-xs mut" x="212" y="546">Share as secret gist</text>
-      <rect class="stroke" x="188" y="562" width="12" height="9" rx="1.5"/><path class="stroke" d="M187 560h14"/><text class="t-xs mut" x="212" y="570">Archive session</text>
+      <circle class="stroke" cx="194" cy="386" r="3"/><path class="stroke" d="M188 382a9 9 0 0 0 0 8M200 382a9 9 0 0 1 0 8"/>
+      <text class="t-xs mut" x="212" y="390">Enable remote control</text>
+      <path class="stroke" d="M189 410l9-9 4 4-9 9h-4Z"/><text class="t-xs mut" x="212" y="414">Rename session</text>
+      <path class="stroke" d="M188 426l4 6 4-12 4 10 3-4"/><text class="t-xs mut" x="212" y="438">View session insights</text>
+      <path class="stroke" d="M194 458v-12M190 450l4-4 4 4M188 462h12"/><text class="t-xs mut" x="212" y="462">Share as secret gist</text>
+      <rect class="stroke" x="188" y="478" width="12" height="9" rx="1.5"/><path class="stroke" d="M187 476h14"/><text class="t-xs mut" x="212" y="486">Archive session</text>
     </g>
     <g>
-      <text class="t-xs accent" x="20" y="162">Which folder and</text><text class="t-xs accent" x="20" y="176">branch this really is</text>
-      <path class="lead" d="M132 170h34"/>
-      <text class="t-xs accent" x="490" y="392">The number to watch</text><text class="t-xs mut" x="490" y="406">As context fills, start</text><text class="t-xs mut" x="490" y="420">a fresh session</text>
-      <path class="lead" d="M474 400h12"/>
-      <text class="t-xs accent" x="490" y="508">More options for</text><text class="t-xs accent" x="490" y="522">the session</text>
-      <path class="lead" d="M474 508h12"/>
+      <text class="t-xs accent" x="20" y="114">Which local folder</text><text class="t-xs accent" x="20" y="128">this session uses</text>
+      <path class="lead" d="M132 126h34"/>
+      <text class="t-xs accent" x="490" y="308">The number to watch</text><text class="t-xs mut" x="490" y="322">As context fills, start</text><text class="t-xs mut" x="490" y="336">a fresh session</text>
+      <path class="lead" d="M474 316h12"/>
+      <text class="t-xs accent" x="490" y="424">More options for</text><text class="t-xs accent" x="490" y="438">the session</text>
+      <path class="lead" d="M474 424h12"/>
     </g>
   `),
 
