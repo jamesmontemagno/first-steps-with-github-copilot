@@ -14,13 +14,15 @@ Choose a product from the switcher in the header. Each product has its own maint
 | **CLI** | `/model`, `/diff` on every change, `/init`, publishing by prompt or by hand, `c` to add an issue to chat, parallel sessions via the left-arrow side panel, `/worktree`, `!` shell commands, Plan mode, `/context`, `/resume` and `copilot --resume`, optional `/remote`, `/pr create`, `/pr agentmerge`, then `/delegate` |
 | **VS Code** | Built-in Copilot plus the GitHub Pull Requests and Issues extension, integrated browser with element picking, `/init` custom instructions, bottom-right context inspection, tests before Git init, Git integration publish and diffs, Plan mode, GitHub MCP, `+` new sessions, PR creation/review/merge |
 
-The shared model preference order is **GPT-6-Luna** (recommended), **Auto** (balanced backup), then [your choice from the active models list](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing). The signup link is [github.com/features/copilot/plans](https://github.com/features/copilot/plans).
+The shared model preference order is **GPT-6-Luna** (recommended), **Auto** (balanced backup), then [your choice from the active models list](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing).
 
 ## Prerequisites
 
-- A GitHub account with a Copilot plan
-- GitHub Copilot app, Copilot CLI, or VS Code + GitHub Copilot, depending on the route
-- Git is required for the CLI and VS Code routes; the desktop app bundles Git
+Before installing:
+
+1. [Create a GitHub account](https://github.com/signup), or use your existing account.
+2. [Activate Copilot Free or a paid Copilot plan](https://github.com/features/copilot/plans). If your organization already provides Copilot access, use that account instead of signing up for another plan.
+3. Install the GitHub Copilot app, Copilot CLI, or VS Code + GitHub Copilot, depending on the route. Git is required for the CLI and VS Code routes; the desktop app bundles Git.
 
 ## Run locally
 

@@ -66,8 +66,10 @@ export function sharedOverview(lab) {
     </div>
     <div class="callout"><div class="callout-icon">${icon("target")}</div><div><strong>What you’ll build</strong><p>A colorful, single-file space quiz. Every route ends with a tested project, a reviewed pull request, and a clear next step.</p></div></div>
     <div class="split-heading"><div><div class="mini-kicker">Before you begin</div><h3>Prerequisites</h3></div><span>Works on macOS, Windows &amp; Linux</span></div>
+    <p>Before installing, create a GitHub account (or use an existing one), then activate Copilot Free or a paid Copilot plan. If your organization already provides Copilot access, use that account.</p>
     <div class="check-grid">
-      <label class="check-card"><input class="progress-check" type="checkbox" data-task="github-account"><span class="custom-check"></span><span><strong>GitHub account</strong><small><a href="${signup}" target="_blank" rel="noopener">Choose a Copilot plan</a></small></span></label>
+      <label class="check-card"><input class="progress-check" type="checkbox" data-task="github-account"><span class="custom-check"></span><span><strong>GitHub account ready</strong><small><a href="https://github.com/signup" target="_blank" rel="noopener">Create a GitHub account</a>, or use your existing account.</small></span></label>
+      <label class="check-card"><input class="progress-check" type="checkbox" data-task="copilot-plan"><span class="custom-check"></span><span><strong>Copilot plan activated</strong><small><a href="${signup}" target="_blank" rel="noopener">Activate Copilot Free or a paid plan</a>, or use access provided by your organization.</small></span></label>
       ${git}
     </div>
     ${lab.policy ? policyNote : ""}
