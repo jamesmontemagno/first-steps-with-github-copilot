@@ -118,45 +118,51 @@ const scenes = {
     <text class="t-xs mut mono" x="36" y="262"><tspan class="accent">/</tspan> search · <tspan class="accent">enter</tspan> details · <tspan class="accent">o</tspan> open · <tspan class="accent">w</tspan> worktree · <tspan class="accent">c</tspan> chat · <tspan class="accent">a</tspan> all</text>
   `),
 
-  appSession: () => svg(516, "The Copilot app local-folder session details panel showing path, project, agent, tokens, and context usage before Git is initialized", `
-    <text class="t-sm txt" x="170" y="30">Space Quiz build</text><text class="t-sm mut mono" x="286" y="30">· space-quiz</text>
-    <rect class="panel" x="170" y="42" width="300" height="452" rx="10"/>
-    <g>
-      <text class="t-xs mut" x="186" y="70">Remote control</text><text class="t-xs txt" x="318" y="70">Not enabled</text>
-      <text class="t-xs mut" x="186" y="96">Path</text><text class="t-xs txt mono" x="318" y="96">~/Projects/spa…</text>
-      <text class="t-xs mut" x="186" y="122">Project</text><text class="t-xs txt" x="318" y="122">space-quiz</text>
-      <text class="t-xs mut" x="186" y="148">Session name</text><text class="t-xs txt" x="318" y="148">Space Quiz build</text>
-      <text class="t-xs mut" x="186" y="174">Session ID</text><text class="t-xs txt mono" x="318" y="174">509d8b9a-cc2e…</text>
-      <text class="t-xs mut" x="186" y="200">Agent</text><text class="t-xs txt" x="318" y="200">Default</text><text class="t-xs link" x="376" y="200">Change</text>
-    </g>
-    <path class="rule" d="M170 216h300"/>
-    <text class="t-xs mut" x="186" y="240">Tokens</text>
-    <text class="t-xs txt" x="318" y="240">↑ 6.8M</text><text class="t-xs mut" x="374" y="240">(6.8M cached)</text>
-    <text class="t-xs txt" x="318" y="260">↓ 35.1K</text><text class="t-xs mut" x="374" y="260">(6.9K reasoning)</text>
-    <text class="t-xs mut" x="186" y="290">Context</text>
-    <text class="t-sm txt" x="186" y="312">27%</text><text class="t-xs mut" x="454" y="312" text-anchor="end">328K</text>
-    ${bar(186, 320, 268, 7, "track")}
-    ${bar(186, 320, 8, 7, "fill alt")}
-    ${bar(196, 320, 4, 7, "fill")}
-    ${bar(202, 320, 62, 7, "fill ok")}
-    <text class="t-xs mut" x="186" y="350">Session spend</text><text class="t-xs txt" x="318" y="350">20.7 AI credits</text>
-    <path class="rule" d="M170 366h300"/>
-    <g>
-      <circle class="stroke" cx="194" cy="386" r="3"/><path class="stroke" d="M188 382a9 9 0 0 0 0 8M200 382a9 9 0 0 1 0 8"/>
-      <text class="t-xs mut" x="212" y="390">Enable remote control</text>
-      <path class="stroke" d="M189 410l9-9 4 4-9 9h-4Z"/><text class="t-xs mut" x="212" y="414">Rename session</text>
-      <path class="stroke" d="M188 426l4 6 4-12 4 10 3-4"/><text class="t-xs mut" x="212" y="438">View session insights</text>
-      <path class="stroke" d="M194 458v-12M190 450l4-4 4 4M188 462h12"/><text class="t-xs mut" x="212" y="462">Share as secret gist</text>
-      <rect class="stroke" x="188" y="478" width="12" height="9" rx="1.5"/><path class="stroke" d="M187 476h14"/><text class="t-xs mut" x="212" y="486">Archive session</text>
-    </g>
-    <g>
-      <text class="t-xs accent" x="20" y="114">Which local folder</text><text class="t-xs accent" x="20" y="128">this session uses</text>
-      <path class="lead" d="M132 126h34"/>
-      <text class="t-xs accent" x="490" y="308">The number to watch</text><text class="t-xs mut" x="490" y="322">As context fills, start</text><text class="t-xs mut" x="490" y="336">a fresh session</text>
-      <path class="lead" d="M474 316h12"/>
-      <text class="t-xs accent" x="490" y="424">More options for</text><text class="t-xs accent" x="490" y="438">the session</text>
-      <path class="lead" d="M474 424h12"/>
-    </g>
+  appProject: () => svg(516, "Project and session controls in the Copilot app title menu", `
+    <rect class="card" x="88" y="18" width="206" height="38" rx="10"/>
+    <text class="t-sm txt" x="104" y="42">Build a space quiz</text><path class="stroke" d="m270 32 6 6 6-6"/>
+    <rect class="panel" x="88" y="68" width="424" height="426" rx="12"/>
+    <text class="t-sm txt" x="112" y="96">Folder session</text>
+    <text class="t-sm mut" x="112" y="132">space-quiz</text>
+    <path class="stroke" d="M112 150h10l3 4h15v15h-28z"/><text class="t-sm txt" x="156" y="165">Path</text><path class="stroke" d="m476 154 6 6-6 6"/>
+    <path class="rule" d="M108 182h384"/>
+    <circle class="stroke" cx="120" cy="208" r="3"/><path class="stroke" d="M113 203a9 9 0 0 0 0 10M127 203a9 9 0 0 1 0 10"/>
+    <text class="t-sm txt" x="156" y="212">Remote control</text><rect class="track" x="440" y="196" width="42" height="22" rx="11"/><circle class="card" cx="451" cy="207" r="9"/>
+    <path class="rule" d="M108 230h384"/>
+    <path class="stroke" d="m112 262 13-13 5 5-13 13-7 2z"/><text class="t-sm txt" x="156" y="264">Rename</text>
+    <path class="stroke" d="M113 294h16m-8-8v16"/><text class="t-sm txt" x="156" y="299">Create nested session</text>
+    <rect class="stroke" x="112" y="320" width="13" height="13" rx="2"/><path class="stroke" d="M117 325h14v14h-14"/><text class="t-sm txt" x="156" y="333">Copy session ID</text>
+    <path class="stroke" d="M120 354v15m-5-10 5-5 5 5m-14 9v6h18v-6"/><text class="t-sm txt" x="156" y="370">Share as secret gist...</text>
+    <path class="rule" d="M108 390h384"/>
+    <rect class="stroke" x="112" y="414" width="16" height="11" rx="2"/><path class="stroke" d="M110 411h20"/><text class="t-sm txt" x="156" y="424">Archive</text>
+    <path d="M112 452h18m-15 0 2 19h10l1-19m-10 6v8m6-8v8m-8-12 2-6h7l2 6" fill="none" stroke="#f85149" stroke-width="1.4"/><text class="t-sm bad" x="156" y="466">Delete</text>
+    <text class="t-xs accent" x="530" y="132">Project details</text><path class="lead" d="M516 134h-22l-18 16"/>
+    <text class="t-xs accent" x="530" y="292">Session controls</text><path class="lead" d="M516 294h-22l-18 10"/>
+  `),
+
+  appUsage: () => svg(410, "Plan and session usage details in the Copilot app", `
+    <rect class="panel" x="76" y="20" width="448" height="318" rx="12"/>
+    <text class="t-sm mut" x="100" y="54">Plan</text><text class="t-sm txt" x="254" y="54">Usage hidden</text>
+    <path class="rule" d="M96 72h408"/>
+    <text class="t-sm mut" x="100" y="103">Session</text><text class="t-sm txt" x="254" y="103">11.4 AI credits</text>
+    <path class="rule" d="M96 122h408"/>
+    <text class="t-sm mut" x="100" y="153">Tokens</text>
+    <text class="t-sm txt" x="254" y="153">↑ 112.5K</text><text class="t-xs mut" x="324" y="153">(112.5K cached)</text>
+    <text class="t-sm txt" x="254" y="177">↓ 546</text><text class="t-xs mut" x="304" y="177">(119 reasoning)</text>
+    <path class="rule" d="M96 196h408"/>
+    <text class="t-sm mut" x="100" y="226">Context</text>
+    ${bar(254, 218, 226, 8, "track")}
+    ${bar(254, 218, 10, 8, "fill alt")}
+    ${bar(264, 218, 18, 8, "fill")}
+    ${bar(282, 218, 10, 8, "fill warn")}
+    <text class="t-sm txt" x="254" y="254">16%</text><text class="t-xs mut" x="480" y="254" text-anchor="end">400K</text>
+    <path class="rule" d="M96 274h408"/>
+    <text class="t-sm txt" x="100" y="310">View usage and plan...</text>
+    <text class="t-xs accent" x="540" y="96">Plan and credits</text><path class="lead" d="M526 98h-20l-18 8"/>
+    <text class="t-xs accent" x="540" y="220">Tokens and context</text><path class="lead" d="M526 222h-20l-18 8"/>
+    <circle class="card" cx="458" cy="372" r="20"/><path class="stroke" d="M447 365c7-5 16-5 23 0-7 8-16 8-23 0m4-3 16 17"/>
+    <circle class="send" cx="506" cy="372" r="20"/><path class="sendGlyph" d="M506 382v-19m-6 6 6-6 6 6"/>
+    <text class="t-xs accent" x="284" y="369">Open usage next to Send</text><path class="lead" d="M418 371h18"/>
   `),
 
   appChanges: () => svg(250, "The Changes tab in the app flyout showing a file diff", `
